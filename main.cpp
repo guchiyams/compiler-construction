@@ -50,26 +50,30 @@ documentation template.
 
 */
 
-#include "lexer.h"
-#include "lexer.cpp"
-using namespace std;
+// #include "lexer.h"
+// #include "lexer.cpp"
+// using namespace std;
 
-
-
+#include "SymbolTable.hpp"
 
 int main()
 {
-    string input = "while ( fahr < upper ) a = 23.00";
-    cout << "Token \t" << "lexeme" << endl;
-    Lexer* test = new Lexer(input);
-    test->parse();
-    
-    cout << endl;
+    SymbolTable symbol_table = SymbolTable();
+    SymbolTableEntry entry;
+    symbol_table.lookup_("while", entry);
+    entry.print();
 
-    string input2 = "int i = a + b";
-    cout << "Token \t" << "lexeme" << endl;
-    Lexer* test2 = new Lexer(input2);
-    test2->parse();
-    return 0;
+    // string input = "while ( fahr < upper ) a = 23.00";
+    // cout << "Token \t" << "lexeme" << endl;
+    // Lexer* test = new Lexer(input);
+    // test->parse();
+    
+    // cout << endl;
+
+    // string input2 = "int i = a + b";
+    // cout << "Token \t" << "lexeme" << endl;
+    // Lexer* test2 = new Lexer(input2);
+    // test2->parse();
+    // return 0;
 }
 

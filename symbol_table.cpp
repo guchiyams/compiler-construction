@@ -1,3 +1,6 @@
+#ifndef SYMBOLTABLE_C
+#define SYMBOLTABLE_C
+
 #include <string>
 #include <iostream>
 
@@ -17,5 +20,4 @@ struct Token{
     const char ops[7] = {'+','-','=','>','<','*','/'};
 };
 
-
-
+#endif
