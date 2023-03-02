@@ -216,8 +216,13 @@ vector<Token> lexicalAnalyzer(const string& input) {
 
 #endif // STATETABLE
 
+// TODO-01: add end of line case. right now, we need to add a space after the very last character for it to work.
+// TODO-02: floating point numbers
+// TODO-03: SEPARATOR bug. if there is no space before a separator, it will be appended to the next state
+//     -> example output: "adding token: IDENTIFIER, lexeme: ) a"
+
 int main() {
-    string input = "while ( fahr < upper ) a = 23";
+    string input = "while( fahr < upper) a= 23 ";
 
     vector<Token> tokens = lexicalAnalyzer(input);
 
