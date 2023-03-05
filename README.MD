@@ -27,18 +27,18 @@ chmod +x main
 * How to run the program
 * Open the command line of your OS
 * Change into downloaded repository directory
-* execute the folliwng command:
+* Execute the folliwng command:
 ```
 ./main <input_file>
 ```
-* the input_fil can be one of the following
-** input_01
-** input_02
-** input_03
+* NOTE: the input_file can be one of the following:
+    * input_01
+    * input_02
+    * input_03
 
 ## Help
 
-Your OS may __ your attempt to run the downloaded executable file. To fix this, try running the executable file as a super user:
+Your OS may reject your attempt to run the downloaded executable file. To fix this, try running the executable file as a super user:
 ```
 sudo ./main <input_file>
 ```
