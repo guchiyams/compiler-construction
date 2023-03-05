@@ -110,12 +110,12 @@ vector<Token> lexicalAnalyzer(const string& input) {
             // is an identifier
             case 3:
                 if (isEnd == true) {
-                    cout << "adding token: IDENTIFIER,      lexeme: " << lexeme << "\n"; 
+                    cout << "token: IDENTIFIER,      lexeme: " << lexeme << "\n"; 
                     tokens.push_back({TokenType::IDENTIFIER, lexeme});
                     continue;
                 }
 
-                cout <<     "adding token: IDENTIFIER,      lexeme: " << lexeme << "\n"; 
+                cout <<     "token: IDENTIFIER,      lexeme: " << lexeme << "\n"; 
                 tokens.push_back({TokenType::IDENTIFIER, lexeme});
                 curr_state = 1;
                 lexeme = "";
@@ -125,11 +125,11 @@ vector<Token> lexicalAnalyzer(const string& input) {
             // is a keyword
             case 26:
                 if (isEnd == true) {
-                    cout << "adding token: KEYWORD   ,      lexeme: " << lexeme << "\n"; 
+                    cout << "token: KEYWORD   ,      lexeme: " << lexeme << "\n"; 
                     tokens.push_back({TokenType::KEYWORD, lexeme});
                     continue;
                 }
-                cout <<     "adding token: KEYWORD   ,      lexeme: " << lexeme << "\n"; 
+                cout <<     "token: KEYWORD   ,      lexeme: " << lexeme << "\n"; 
                 tokens.push_back({TokenType::KEYWORD, lexeme});
                 curr_state = 1;
                 lexeme = "";
@@ -139,11 +139,11 @@ vector<Token> lexicalAnalyzer(const string& input) {
             // is an integer
             case 5:
                 if (isEnd == true) {
-                    cout << "adding token: INTEGER   ,      lexeme: " << lexeme << "\n"; 
+                    cout << "token: INTEGER   ,      lexeme: " << lexeme << "\n"; 
                     tokens.push_back({TokenType::INTEGER, lexeme});
                     continue;
                 }
-                cout <<     "adding token: INTEGER   ,      lexeme: " << lexeme << "\n"; 
+                cout <<     "token: INTEGER   ,      lexeme: " << lexeme << "\n"; 
                 tokens.push_back({TokenType::INTEGER, lexeme});
                 curr_state = 1;
                 lexeme = "";
@@ -153,11 +153,11 @@ vector<Token> lexicalAnalyzer(const string& input) {
             // is an real
             case 7:
                 if (isEnd == true) {
-                    cout << "adding token: REAL      ,      lexeme: " << lexeme << "\n"; 
+                    cout << "token: REAL      ,      lexeme: " << lexeme << "\n"; 
                     tokens.push_back({TokenType::REAL, lexeme});
                     continue;
                 }
-                cout <<     "adding token: REAL      ,      lexeme: " << lexeme << "\n"; 
+                cout <<     "token: REAL      ,      lexeme: " << lexeme << "\n"; 
                 tokens.push_back({TokenType::REAL, lexeme});
                 curr_state = 1;
                 lexeme = "";
@@ -167,11 +167,11 @@ vector<Token> lexicalAnalyzer(const string& input) {
             // is an operator
             case 9:
                 if (isEnd == true) {
-                    cout << "adding token: OPERATOR  ,      lexeme: " << lexeme << "\n"; 
+                    cout << "token: OPERATOR  ,      lexeme: " << lexeme << "\n"; 
                     tokens.push_back({TokenType::OPERATOR, lexeme});
                     continue;
                 }
-                cout <<     "adding token: OPERATOR  ,      lexeme: " << lexeme << "\n"; 
+                cout <<     "token: OPERATOR  ,      lexeme: " << lexeme << "\n"; 
                 tokens.push_back({TokenType::OPERATOR, lexeme});
                 curr_state = 1;
                 lexeme = "";
@@ -181,11 +181,11 @@ vector<Token> lexicalAnalyzer(const string& input) {
             // is a separator
             case 11:
                 if (isEnd == true) {
-                    cout << "adding token: SEPARATOR ,      lexeme: " << lexeme << "\n"; 
+                    cout << "token: SEPARATOR ,      lexeme: " << lexeme << "\n"; 
                     tokens.push_back({TokenType::SEPARATOR, lexeme});
                     continue;
                 }
-                cout <<     "adding token: SEPARATOR ,      lexeme: " << lexeme << "\n"; 
+                cout <<     "token: SEPARATOR ,      lexeme: " << lexeme << "\n"; 
                 tokens.push_back({TokenType::SEPARATOR, lexeme});
                 curr_state = 1;
                 lexeme = "";
@@ -200,9 +200,9 @@ vector<Token> lexicalAnalyzer(const string& input) {
                     if (isEnd == true) {
                         continue;
                     } else {
-                        // !!LAST TOKEN!!;
-                        // SETTING NEXT STATE TO CURRENT STATES' END OF INPUT STATE (COLUMN INDEX 16)
-                        // SETTING ISEND BOOL VARIABLE TO TRUE, THEN DECREMENT ITERATOR TO RUN AGAIN
+                        // last token:
+                        //      1. setting next state to current state's end of input state (column index 32)
+                        //      2. setting isEnd bool variable to true, then decrement iteragot to run again
 
                         curr_state = TRANSITION_TABLE[next_state][32];
                         isEnd = true;
