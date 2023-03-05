@@ -10,9 +10,11 @@ Team :
 
 int main()
 {
-    string input = "if(x > y){x=0;}";
+    string input_01 = "if(x > y){x=0;}";
+    string input_02 = "while  (fahr < upper)   a = 23.00";
+    string input_03 = "for (int i = 0; i < 3; i++) x = 2;";
 
-    vector<Token> tokens = lexicalAnalyzer(input);
+    vector<Token> tokens = lexicalAnalyzer(input_03);
 
     return 0;
 }
