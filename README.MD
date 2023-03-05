@@ -12,7 +12,7 @@ To identify these patters, the lexical analyzer uses a fininte state machine (FS
 
 ### Dependencies
 
-* OS: Windows 10 || Mac OS || Linux
+* OS: Mac OS || Linux
 
 ### Installing
 
@@ -45,5 +45,5 @@ sudo ./main <input_file>
 
 ## Authors
 
-Yamato Eguchi
+Yamato Eguchi, 
 Kyle Nguyen
