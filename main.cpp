@@ -10,10 +10,7 @@ Team :
 
 int main()
 {
-    string input = "for(int i=0;i<5;i++){x=y-0.5; }";
-
-    double _ = +.67;
-    cout << _ << std::endl;
+    string input = "if(x > y){x=0;}";
 
     vector<Token> tokens = lexicalAnalyzer(input);
 
