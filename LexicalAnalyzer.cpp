@@ -150,7 +150,7 @@ vector<Token> lexicalAnalyzer(const string& input) {
                 i--;
                 break;
             
-            // is an real
+            // is a real
             case 7:
                 if (isEnd == true) {
                     cout << "token: REAL      ,      lexeme: " << lexeme << "\n"; 
