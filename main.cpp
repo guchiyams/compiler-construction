@@ -6,15 +6,41 @@ Team :
     * Hoang Nguyen ( Kyle )
     * Yamato Eguchi
 */
+#include <iostream>
+#include <fstream>
 #include "LexicalAnalyzer.cpp"
 
-int main()
-{
-    string input_01 = "if(x > y){x=0;}";
-    string input_02 = "while  (fahr < upper)   a = 23.00";
-    string input_03 = "for (int i = 0; i < 3; i++) x = 2;";
+using std::cout;
 
-    vector<Token> tokens = lexicalAnalyzer(input_02);
+int main(int argc, char* argv[])
+{
+    if (argc > 2) {
+        cout << "Too many arguments. Aborting..." << std::endl;
+        abort();
+    }
+
+    const string INPUT = argv[1];
+    string file_name = "";
+
+    if (INPUT == "input_01") file_name = "input_01.txt";
+    else if (INPUT == "input_02") file_name = "input_02.txt";
+    else if (INPUT == "input_03") file_name = "input_03.txt";
+    else {
+        cout << "Invalid input. Aborting..." << std::endl;
+        abort();
+    }
+
+    std::ifstream file("./input/" + file_name);
+
+    if (file.is_open()) {
+        string line = "";
+        while (std::getline(file, line)) {
+            vector<Token> tokens = lexicalAnalyzer(line);
+        }
+    } else {
+        cout << "Input file not open. Abortin..." << std::endl;
+        abort();
+    }
 
     return 0;
 }

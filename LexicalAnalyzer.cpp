@@ -85,7 +85,6 @@ vector<Token> lexicalAnalyzer(const string& input) {
 
     for (int i = 0; i < input.length(); i++) {
         char c = input[i];
-
         int next_state = 0;
 
         if (isEnd == false) {
@@ -201,7 +200,7 @@ vector<Token> lexicalAnalyzer(const string& input) {
                     if (isEnd == true) {
                         continue;
                     } else {
-                        // !!LAST TOKEN!!\n";
+                        // !!LAST TOKEN!!;
                         // SETTING NEXT STATE TO CURRENT STATES' END OF INPUT STATE (COLUMN INDEX 16)
                         // SETTING ISEND BOOL VARIABLE TO TRUE, THEN DECREMENT ITERATOR TO RUN AGAIN
 
