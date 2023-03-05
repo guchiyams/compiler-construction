@@ -4,7 +4,7 @@ Professor : Sijie Shang
 Class : CPSC 323
 Team : 
     * Hoang Nguyen ( Kyle )
-    * Ginya
+    * Yamato Eguchi
 */
 #include "LexicalAnalyzer.cpp"
 
