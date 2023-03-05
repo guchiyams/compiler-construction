@@ -62,7 +62,8 @@ const int TRANSITION_TABLE[128][128] = {
 enum class TokenType {
     IDENTIFIER,
     KEYWORD,
-    NUMBER,
+    INTEGER,
+    REAL,
     OPERATOR,
     SEPARATOR
 };
@@ -140,11 +141,11 @@ vector<Token> lexicalAnalyzer(const string& input) {
             case 5:
                 if (isEnd == true) {
                     cout << "adding token: INTEGER   ,      lexeme: " << lexeme << "\n"; 
-                    tokens.push_back({TokenType::NUMBER, lexeme});
+                    tokens.push_back({TokenType::INTEGER, lexeme});
                     continue;
                 }
                 cout <<     "adding token: INTEGER   ,      lexeme: " << lexeme << "\n"; 
-                tokens.push_back({TokenType::NUMBER, lexeme});
+                tokens.push_back({TokenType::INTEGER, lexeme});
                 curr_state = 1;
                 lexeme = "";
                 i--;
@@ -154,11 +155,11 @@ vector<Token> lexicalAnalyzer(const string& input) {
             case 7:
                 if (isEnd == true) {
                     cout << "adding token: REAL      ,      lexeme: " << lexeme << "\n"; 
-                    tokens.push_back({TokenType::NUMBER, lexeme});
+                    tokens.push_back({TokenType::REAL, lexeme});
                     continue;
                 }
                 cout <<     "adding token: REAL      ,      lexeme: " << lexeme << "\n"; 
-                tokens.push_back({TokenType::NUMBER, lexeme});
+                tokens.push_back({TokenType::REAL, lexeme});
                 curr_state = 1;
                 lexeme = "";
                 i--;
