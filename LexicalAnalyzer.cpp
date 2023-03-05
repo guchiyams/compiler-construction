@@ -75,8 +75,8 @@ struct Token {
 };
 
 vector<Token> lexicalAnalyzer(const string& input) {
-    cout << "\nstarting lexical analyzer... \n";
-    cout << "input: \"" << input << "\"\n\n";
+    // cout << "\nstarting lexical analyzer... \n";
+    // cout << "input: \"" << input << "\"\n\n";
 
     vector<Token> tokens;
     int curr_state = 1;
@@ -215,7 +215,7 @@ vector<Token> lexicalAnalyzer(const string& input) {
         }
         curr_state = next_state;
     }
-    cout << "\nlexical analyzer complete...\n\n";
+    // cout << "\nlexical analyzer complete...\n\n";
     return tokens;
 }
 
