@@ -30,8 +30,10 @@ int main(int argc, char* argv[])
         abort();
     }
 
+    // open file
     std::ifstream file("./input/" + file_name);
 
+    // check if successfully open
     if (file.is_open()) {
         string line = "";
         while (std::getline(file, line)) {
