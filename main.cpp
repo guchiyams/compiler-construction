@@ -14,7 +14,7 @@ int main()
     string input_02 = "while  (fahr < upper)   a = 23.00";
     string input_03 = "for (int i = 0; i < 3; i++) x = 2;";
 
-    vector<Token> tokens = lexicalAnalyzer(input_03);
+    vector<Token> tokens = lexicalAnalyzer(input_02);
 
     return 0;
 }

@@ -1,5 +1,5 @@
-#ifndef STATETABLE
-#define STATETABLE
+#ifndef LEXICAL_ANALYZER
+#define LEXICAL_ANALYZER
 
 #include <iostream>
 #include <stdexcept>
@@ -38,7 +38,7 @@ const int TRANSITION_TABLE[128][128] = {
     {12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12,  6, 12,  7,  7,  7,  7 },      // STATE_06 -> IN REAL
     { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  8, 10,  1, 13 },      // STATE_07 -> END REAL NUMBER -> ACCEPTING STATE -> BACK UP
     { 9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9 },      // STATE_08 -> FOUND operator
-    { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  8, 10,  1, 13 },      // STATE_09 -> END operator
+    { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  4,  1,  8, 10,  1, 13 },      // STATE_09 -> END operator
     {11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 },      // STATE_10 -> FOUND separator
     { 2,  2,  2,  2,  2, 20,  2,  2, 22,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 14,  2,  2,  2,  2,  4,  6,  8, 10,  1, 13 },      // STATE_11 -> END separator -> ACCEPTING STATE -> BACK UP
     { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 13 },      // STATE_12 -> INVALID STATE -> THROW EXCEPTION -> LOG ERROR
@@ -220,6 +220,4 @@ vector<Token> lexicalAnalyzer(const string& input) {
     return tokens;
 }
 
-#endif // STATETABLE
-
-// TODO-02: floating point numbers
+#endif // LEXICAL_ANALYZER
