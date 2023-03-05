@@ -1,5 +1,49 @@
-# Detail
-* Project 1
-* Class : CPSC 323
-* Language : C++ 
+# Project Title
 
+CPSC 323 - Project 1 - Lexical Analyzer
+
+## Description
+
+In this project we created a lexical analyzer that reads the source code of a program to break it down into a sequence of tokens or lexemes: identifiers, keywords, operators, literals, etc. It identifies the patterns of characters that represent specific language constructs.
+
+To identify these patters, the lexical analyzer uses a fininte state machine (FSM). The FSM's state transition function is represented as a two-dimensional array, where each column represents an input symbol, and each row as different states. It lists the current state of the machine, the input symbol being read, and the next state to which the machine transitions, given that input symbol.
+
+## Getting Started
+
+### Dependencies
+
+* OS: Windows 10 || Mac OS || Linux
+
+### Installing
+
+* Download repository <a src="https://drive.google.com/drive/folders/1-hHyjDu8-U9jEtvkZXcql5gZyLFBQCNO?usp=share_link">here</a>
+* Change ```main``` executable file permission
+```
+chmod +x main
+```
+
+### Executing program
+
+* How to run the program
+* Open the command line of your OS
+* Change into downloaded repository directory
+* execute the folliwng command:
+```
+./main <input_file>
+```
+* the input_fil can be one of the following
+** input_01
+** input_02
+** input_03
+
+## Help
+
+Your OS may __ your attempt to run the downloaded executable file. To fix this, try running the executable file as a super user:
+```
+sudo ./main <input_file>
+```
+
+## Authors
+
+Yamato Eguchi
+Kyle Nguyen
