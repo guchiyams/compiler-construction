@@ -16,7 +16,7 @@ To identify these patters, the lexical analyzer uses a fininte state machine (FS
 
 ### Installing
 
-* Download repository <a src="https://drive.google.com/drive/folders/1-hHyjDu8-U9jEtvkZXcql5gZyLFBQCNO?usp=share_link">here</a>
+* Download repository [Named Link](https://drive.google.com/drive/folders/1-hHyjDu8-U9jEtvkZXcql5gZyLFBQCNO?usp=share_link "here")
 * Change ```main``` executable file permission
 ```
 chmod +x main
