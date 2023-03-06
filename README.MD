@@ -46,5 +46,4 @@ sudo ./main <input_file>
 
 ## Authors
 
-Yamato Eguchi, 
-Kyle Nguyen
+Yamato Eguchi
