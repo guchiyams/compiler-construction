@@ -17,9 +17,9 @@ To identify these patters, the lexical analyzer uses a fininte state machine (FS
 ### Installing
 
 * Download repository [here](https://drive.google.com/drive/folders/1-hHyjDu8-U9jEtvkZXcql5gZyLFBQCNO?usp=share_link)
-* Change ```main``` executable file permission
+* Change ```LexicalAnalyzer``` executable file permission
 ```
-chmod +x main
+chmod +x LexicalAnalyzer
 ```
 
 ### Executing program
@@ -29,7 +29,7 @@ chmod +x main
 * Change into downloaded repository directory
 * Execute the folliwng command:
 ```
-./main <input_file>
+./LexicalAnalyzer <input_file>
 ```
 * NOTE: the input_file can be one of the following:
     * input_01
@@ -41,7 +41,7 @@ chmod +x main
 
 Your OS may reject your attempt to run the downloaded executable file. To fix this, try running the executable file as a super user:
 ```
-sudo ./main <input_file>
+sudo ./LexicalAnalyzer <input_file>
 ```
 
 ## Authors
