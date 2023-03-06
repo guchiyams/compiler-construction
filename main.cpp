@@ -20,29 +20,27 @@ int main(int argc, char* argv[])
     }
 
     const string INPUT = argv[1];
-    string file_name = "";
+    string input_file_name = "";
+    string output_file_name = "";
 
-    if (INPUT == "input_01") file_name = "input_01.txt";
-    else if (INPUT == "input_02") file_name = "input_02.txt";
-    else if (INPUT == "input_03") file_name = "input_03.txt";
+    if (INPUT == "input_01") {
+        input_file_name = "input_01.txt";
+        output_file_name = "01_output.txt";
+    }
+    else if (INPUT == "input_02") {
+        input_file_name = "input_02.txt";
+        output_file_name = "02_output.txt";
+    }
+    else if (INPUT == "input_03") {
+        input_file_name = "input_03.txt";
+        output_file_name = "03_output.txt";
+    }
     else {
         cout << "Invalid input. Aborting..." << std::endl;
         abort();
     }
 
-    // open file
-    std::ifstream file("./input/" + file_name);
-
-    // check if successfully open
-    if (file.is_open()) {
-        string line = "";
-        while (std::getline(file, line)) {
-            vector<Token> tokens = lexicalAnalyzer(line);
-        }
-    } else {
-        cout << "Input file not open. Abortin..." << std::endl;
-        abort();
-    }
+    vector<Token> tokens = lexicalAnalyzer(input_file_name, output_file_name);
 
     return 0;
 }

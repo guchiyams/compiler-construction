@@ -1,0 +1,70 @@
+token: KEYWORD   ,      lexeme: for
+token: SEPARATOR ,      lexeme: (
+token: KEYWORD   ,      lexeme: int
+token: IDENTIFIER,      lexeme: i
+token: OPERATOR  ,      lexeme: =
+token: INTEGER   ,      lexeme: 0
+token: SEPARATOR ,      lexeme: ;
+token: IDENTIFIER,      lexeme: i
+token: OPERATOR  ,      lexeme: <
+token: INTEGER   ,      lexeme: 3
+token: SEPARATOR ,      lexeme: ;
+token: IDENTIFIER,      lexeme: i
+token: OPERATOR  ,      lexeme: +
+token: OPERATOR  ,      lexeme: +
+token: SEPARATOR ,      lexeme: )
+token: SEPARATOR ,      lexeme: {
+token: IDENTIFIER,      lexeme: x
+token: OPERATOR  ,      lexeme: +
+token: OPERATOR  ,      lexeme: =
+token: INTEGER   ,      lexeme: 2
+token: SEPARATOR ,      lexeme: ;
+token: SEPARATOR ,      lexeme: }
+token: KEYWORD   ,      lexeme: int
+token: IDENTIFIER,      lexeme: x
+token: OPERATOR  ,      lexeme: =
+token: REAL      ,      lexeme: .6
+token: SEPARATOR ,      lexeme: ;
+token: KEYWORD   ,      lexeme: int
+token: IDENTIFIER,      lexeme: y
+token: OPERATOR  ,      lexeme: =
+token: REAL      ,      lexeme: 9.9
+token: SEPARATOR ,      lexeme: ;
+token: KEYWORD   ,      lexeme: while
+token: SEPARATOR ,      lexeme: (
+token: IDENTIFIER,      lexeme: x
+token: OPERATOR  ,      lexeme: >
+token: IDENTIFIER,      lexeme: y
+token: SEPARATOR ,      lexeme: )
+token: SEPARATOR ,      lexeme: {
+token: KEYWORD   ,      lexeme: if
+token: SEPARATOR ,      lexeme: (
+token: IDENTIFIER,      lexeme: x
+token: OPERATOR  ,      lexeme: =
+token: OPERATOR  ,      lexeme: =
+token: INTEGER   ,      lexeme: 100000
+token: SEPARATOR ,      lexeme: )
+token: SEPARATOR ,      lexeme: {
+token: IDENTIFIER,      lexeme: x
+token: OPERATOR  ,      lexeme: -
+token: OPERATOR  ,      lexeme: -
+token: SEPARATOR ,      lexeme: ;
+token: SEPARATOR ,      lexeme: }
+token: KEYWORD   ,      lexeme: else
+token: KEYWORD   ,      lexeme: if
+token: SEPARATOR ,      lexeme: (
+token: IDENTIFIER,      lexeme: x
+token: OPERATOR  ,      lexeme: =
+token: OPERATOR  ,      lexeme: =
+token: REAL      ,      lexeme: 25.939
+token: SEPARATOR ,      lexeme: )
+token: SEPARATOR ,      lexeme: {
+token: IDENTIFIER,      lexeme: x
+token: OPERATOR  ,      lexeme: +
+token: OPERATOR  ,      lexeme: +
+token: SEPARATOR ,      lexeme: ;
+token: SEPARATOR ,      lexeme: }
+token: KEYWORD   ,      lexeme: return
+token: IDENTIFIER,      lexeme: x
+token: SEPARATOR ,      lexeme: ;
+token: SEPARATOR ,      lexeme: }

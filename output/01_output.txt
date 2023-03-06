@@ -1,0 +1,5 @@
+token: KEYWORD   ,      lexeme: int
+token: IDENTIFIER,      lexeme: x
+token: OPERATOR  ,      lexeme: =
+token: INTEGER   ,      lexeme: 5
+token: SEPARATOR ,      lexeme: ;
