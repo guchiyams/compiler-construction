@@ -35,6 +35,7 @@ chmod +x main
     * input_01
     * input_02
     * input_03
+* NOTE: the output of the program will be printed into the corresponding input file suffix number output file (e.g. input_01 -> 01_output.txt)
 
 ## Help
 
