@@ -114,7 +114,6 @@ vector<Token> lexicalAnalyzer(const string& input) {
                     tokens.push_back({TokenType::IDENTIFIER, lexeme});
                     continue;
                 }
-
                 cout <<     "token: IDENTIFIER,      lexeme: " << lexeme << "\n"; 
                 tokens.push_back({TokenType::IDENTIFIER, lexeme});
                 curr_state = 1;
