@@ -17,6 +17,9 @@ int main(int argc, char* argv[])
     if (argc > 2) {
         cout << "Too many arguments. Aborting..." << std::endl;
         abort();
+    } else if (argc == 1) {
+        cout << "Missing paramter: input_[01 | 02 | 03]. Aborting..." << std::endl;
+        abort();
     }
 
     const string INPUT = argv[1];
@@ -36,7 +39,7 @@ int main(int argc, char* argv[])
         output_file_name = "03_output.txt";
     }
     else {
-        cout << "Invalid input. Aborting..." << std::endl;
+        cout << "Invalid argument. Aborting..." << std::endl;
         abort();
     }
 
