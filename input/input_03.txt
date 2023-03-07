@@ -14,3 +14,7 @@ while (x > y) {
 
     return x;
 }
+
+int thisfunction() {
+    return x;
+}

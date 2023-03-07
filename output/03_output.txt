@@ -68,3 +68,12 @@ token: KEYWORD   ,      lexeme: return
 token: IDENTIFIER,      lexeme: x
 token: SEPARATOR ,      lexeme: ;
 token: SEPARATOR ,      lexeme: }
+token: KEYWORD   ,      lexeme: int
+token: IDENTIFIER,      lexeme: thisfunction
+token: SEPARATOR ,      lexeme: (
+token: SEPARATOR ,      lexeme: )
+token: SEPARATOR ,      lexeme: {
+token: KEYWORD   ,      lexeme: return
+token: IDENTIFIER,      lexeme: x
+token: SEPARATOR ,      lexeme: ;
+token: SEPARATOR ,      lexeme: }

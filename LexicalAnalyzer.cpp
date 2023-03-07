@@ -58,13 +58,9 @@ vector<Token> Lexer::parser(){
                 switch (next_state) {
                     // is an identifier
                     case 3:
-                        if (isEnd == true) {
-                            out_file << "token: IDENTIFIER,      lexeme: " << lexeme << "\n"; 
-                            tokens.push_back({TokenType::IDENTIFIER, lexeme});
-                            continue;
-                        }
                         out_file <<     "token: IDENTIFIER,      lexeme: " << lexeme << "\n"; 
                         tokens.push_back({TokenType::IDENTIFIER, lexeme});
+                        if (isEnd == true) continue;
                         curr_state = 1;
                         lexeme = "";
                         i--;
@@ -72,13 +68,9 @@ vector<Token> Lexer::parser(){
 
                     // is a keyword
                     case 36:
-                        if (isEnd == true) {
-                            out_file << "token: KEYWORD   ,      lexeme: " << lexeme << "\n"; 
-                            tokens.push_back({TokenType::KEYWORD, lexeme});
-                            continue;
-                        }
                         out_file <<     "token: KEYWORD   ,      lexeme: " << lexeme << "\n"; 
                         tokens.push_back({TokenType::KEYWORD, lexeme});
+                        if (isEnd == true) continue;
                         curr_state = 1;
                         lexeme = "";
                         i--;
@@ -86,13 +78,9 @@ vector<Token> Lexer::parser(){
 
                     // is an integer
                     case 5:
-                        if (isEnd == true) {
-                            out_file << "token: INTEGER   ,      lexeme: " << lexeme << "\n"; 
-                            tokens.push_back({TokenType::INTEGER, lexeme});
-                            continue;
-                        }
                         out_file <<     "token: INTEGER   ,      lexeme: " << lexeme << "\n"; 
                         tokens.push_back({TokenType::INTEGER, lexeme});
+                        if (isEnd == true) continue;
                         curr_state = 1;
                         lexeme = "";
                         i--;
@@ -100,13 +88,9 @@ vector<Token> Lexer::parser(){
                     
                     // is a real
                     case 7:
-                        if (isEnd == true) {
-                            out_file << "token: REAL      ,      lexeme: " << lexeme << "\n"; 
-                            tokens.push_back({TokenType::REAL, lexeme});
-                            continue;
-                        }
                         out_file <<     "token: REAL      ,      lexeme: " << lexeme << "\n"; 
                         tokens.push_back({TokenType::REAL, lexeme});
+                        if (isEnd == true) continue;
                         curr_state = 1;
                         lexeme = "";
                         i--;
@@ -114,13 +98,9 @@ vector<Token> Lexer::parser(){
 
                     // is an operator
                     case 9:
-                        if (isEnd == true) {
-                            out_file << "token: OPERATOR  ,      lexeme: " << lexeme << "\n"; 
-                            tokens.push_back({TokenType::OPERATOR, lexeme});
-                            continue;
-                        }
                         out_file <<     "token: OPERATOR  ,      lexeme: " << lexeme << "\n"; 
                         tokens.push_back({TokenType::OPERATOR, lexeme});
+                        if (isEnd == true) continue;
                         curr_state = 1;
                         lexeme = "";
                         i--;
@@ -128,13 +108,9 @@ vector<Token> Lexer::parser(){
 
                     // is a separator
                     case 11:
-                        if (isEnd == true) {
-                            out_file << "token: SEPARATOR ,      lexeme: " << lexeme << "\n"; 
-                            tokens.push_back({TokenType::SEPARATOR, lexeme});
-                            continue;
-                        }
                         out_file <<     "token: SEPARATOR ,      lexeme: " << lexeme << "\n"; 
                         tokens.push_back({TokenType::SEPARATOR, lexeme});
+                        if (isEnd == true) continue;
                         curr_state = 1;
                         lexeme = "";
                         i--;
@@ -149,9 +125,8 @@ vector<Token> Lexer::parser(){
                                 continue;
                             } else {
                                 // last token:
-                                //      1. set next state to current state's end of input state (column index 32)
-                                //      2. set isEnd bool variable to true, then decrement iteragot to run again
-
+                                //      -> set next state to current state's end of input state (column index 32)
+                                //      -> set isEnd bool variable to true, then decrement iterator to run again
                                 curr_state = TRANSITION_TABLE[next_state][32];
                                 isEnd = true;
                                 i--;
@@ -177,7 +152,6 @@ vector<Token> Lexer::parser(){
     return tokens;
 }
 
-
 const unordered_map<char, int> Lexer::CHAR_TO_COL {
     // ALPHA [a-z]
     {'a',  0}, {'b',  1}, {'c',  2}, {'d',  3}, {'e',  4}, {'f',  5}, {'g',  6}, {'h',  7}, {'i',  8}, {'j',  9}, {'k', 10}, {'l', 11}, {'m', 12}, {'n', 13}, {'o', 14}, {'p', 15}, {'q', 16}, {'r', 17}, {'s', 18}, {'t', 19}, {'u', 20}, {'v', 21}, {'w', 22}, {'x', 23}, {'y', 24}, {'z', 25}, {'_', 26},
@@ -190,8 +164,6 @@ const unordered_map<char, int> Lexer::CHAR_TO_COL {
     // SPACE
     {' ', 31}
 };
-
-
 
 // TRANSITION TABLE
 const int Lexer::TRANSITION_TABLE[128][128] = {

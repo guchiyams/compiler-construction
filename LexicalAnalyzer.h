@@ -45,8 +45,4 @@ public:
 
 };
 
-
-
-
-
 #endif // LEXICAL_ANALYZER
