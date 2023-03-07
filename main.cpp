@@ -8,6 +8,7 @@ Team :
 */
 #include <iostream>
 #include <fstream>
+#include "LexicalAnalyzer.h"
 #include "LexicalAnalyzer.cpp"
 
 using std::cout;
@@ -25,7 +26,7 @@ int main(int argc, char* argv[])
     const string INPUT = argv[1];
     string input_file_name = "";
     string output_file_name = "";
-
+    
     if (INPUT == "input_01") {
         input_file_name = "input_01.txt";
         output_file_name = "01_output.txt";
@@ -43,7 +44,8 @@ int main(int argc, char* argv[])
         abort();
     }
 
-    vector<Token> tokens = lexicalAnalyzer(input_file_name, output_file_name);
+    Lexer* l1 = new Lexer(input_file_name, output_file_name);
+    l1->parser();
 
     return 0;
 }

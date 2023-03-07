@@ -1,95 +1,20 @@
-#ifndef LEXICAL_ANALYZER
-#define LEXICAL_ANALYZER
+#include "LexicalAnalyzer.h"
 
-#include <fstream>
-#include <iostream>
-#include <stdexcept>
-#include <string>
-#include <unordered_map>
-#include <vector>
+Lexer::Lexer( string& input_file_name , string& output_file_name)
+{
+    this->input_file_name = input_file_name;
+    this->output_file_name = output_file_name;
+}
 
-using std::cout;
-using std::string;
-using std::unordered_map;
-using std::vector;
+Lexer::~Lexer()
+{
+    cout << "Destructor is called\n";
+}
 
-// CHAR TO COLUMN - map char to column number
-unordered_map<char, int> CHAR_TO_COL {
-    // ALPHA [a-z]
-    {'a',  0}, {'b',  1}, {'c',  2}, {'d',  3}, {'e',  4}, {'f',  5}, {'g',  6}, {'h',  7}, {'i',  8}, {'j',  9}, {'k', 10}, {'l', 11}, {'m', 12}, {'n', 13}, {'o', 14}, {'p', 15}, {'q', 16}, {'r', 17}, {'s', 18}, {'t', 19}, {'u', 20}, {'v', 21}, {'w', 22}, {'x', 23}, {'y', 24}, {'z', 25}, {'_', 26},
-    // DIGITS [0-9]
-    {'0', 27}, {'1', 27}, {'2', 27}, {'3', 27}, {'4', 27}, {'5', 27}, {'6', 27}, {'7', 27}, {'8', 27}, {'9', 27}, {'.', 28},
-    // OPERATORS [<, >, =, /, -, +]
-    {'<', 29}, {'>', 29}, {'=', 29}, {'/', 29}, {'-', 29}, {'+', 29}, {'%', 29},
-    // SEPARATORS [(, ), {, }]
-    {'(', 30}, {')', 30}, {'{', 30}, {'}' , 30}, {';', 30},
-    // SPACE
-    {' ', 31}
-};
-
-// TRANSITION TABLE
-const int TRANSITION_TABLE[128][128] = {
-//    a   b   c   d   e   f   g   h   i   j   k   l   m   n   o   p   q   r   s   t   u   v   w   x   y   z   _   D   .  OP  SP  ' ' endl
-    { 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 },      // STATE_00 -> PLACEHOLDER
-    { 2,  2,  2,  2, 26, 19,  2,  2, 22,  2,  2,  2,  2,  2,  2,  2,  2, 30,  2,  2,  2,  2, 14,  2,  2,  2,  2,  4,  6,  8, 10,  1, 13 },      // STATE_01 -> STARTING STATE
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  2 },      // STATE_02 -> IN IDENTIFIER
-    { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  8, 10,  1, 13 },      // STATE_03 -> END IDENTIFIER -> ACCEPTING STATE -> BACK UP
-    {12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12,  4,  6,  5,  5,  5,  3 },      // STATE_04 -> IN INTEGER
-    { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  8, 10,  1, 13 },      // STATE_05 -> END INTEGER -> ACCEPTING STATE -> BACK UP
-    {12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12,  6, 12,  7,  7,  7,  7 },      // STATE_06 -> IN REAL
-    { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  8, 10,  1, 13 },      // STATE_07 -> END REAL NUMBER -> ACCEPTING STATE -> BACK UP
-    { 9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9,  9 },      // STATE_08 -> FOUND operator
-    { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  4,  1,  8, 10,  1, 13 },      // STATE_09 -> END operator
-    {11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 },      // STATE_10 -> FOUND separator
-    { 2,  2,  2,  2,  2, 20,  2,  2, 22,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 14,  2,  2,  2,  2,  4,  6,  8, 10,  1, 13 },      // STATE_11 -> END separator -> ACCEPTING STATE -> BACK UP
-    { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 13 },      // STATE_12 -> INVALID STATE -> THROW EXCEPTION -> LOG ERROR
-    { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1, 13 },      // STATE_13 -> END OF INPUT -> ACCEPTING STATE -> BREAK LOOP
-    { 2,  2,  2,  2,  2,  2,  2, 15,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_14 -> IN while_w KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2, 16,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_15 ->      IN while_h KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 17,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_16 ->      IN while_i KEYWORD
-    { 2,  2,  2,  2, 18,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_17 ->      IN while_l KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12, 12, 36, 36,  3 },      // STATE_18 ->      IN while_e KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 20,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_19 -> IN for_f KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 21,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_20 ->      IN for_o KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12, 12, 36, 36,  3 },      // STATE_21 ->      IN for_r KEYWORD
-    { 2,  2,  2,  2,  2, 23,  2,  2,  2,  2,  2,  2,  2, 24,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_22 -> IN i_ KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12, 12, 36, 36,  3 },      // STATE_23 ->      IN if_f KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 25,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_24 ->      IN int_n KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12, 12, 36, 36,  3 },      // STATE_25 ->      IN int_t KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 27,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_26 -> IN else_e KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 28,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_27 ->      IN else_l
-    { 2,  2,  2,  2, 29,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_28 ->      IN else_s KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12, 12, 36, 36,  3 },      // STATE_29 ->      IN else_e KEYWORD
-    { 2,  2,  2,  2, 31,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_30 -> IN return_r KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 32,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_31 ->      IN return_e KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 33,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_32 ->      IN return_t KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 34,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_33 ->      IN return_u KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 35,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3 },      // STATE_34 ->      IN return_r KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12, 12, 36, 36,  3 },      // STATE_35 ->      IN return_n KEYWORD
-    { 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  8, 10,  1, 13 },      // STATE_36 -> END KEYWORD
-};
-
-// define token types
-enum class TokenType {
-    IDENTIFIER,
-    KEYWORD,
-    INTEGER,
-    REAL,
-    OPERATOR,
-    SEPARATOR
-};
-
-// define struct to hold lexeme information
-struct Token {
-    TokenType type;
-    string lexeme;
-};
-
-vector<Token> lexicalAnalyzer(const string& input_file_name, const string& output_file_name) {
-
-    // open input and output files
-    std::ifstream in_file("./input/" + input_file_name);
-    std::ofstream out_file("./output/" + output_file_name, std::ios::trunc);
+vector<Token> Lexer::parser(){
+       // open input and output files
+    std::ifstream in_file("./input/" + this->input_file_name);
+    std::ofstream out_file("./output/" + this->output_file_name, std::ios::trunc);
 
     // initialize vector of tokens
     vector<Token> tokens;
@@ -251,5 +176,3 @@ vector<Token> lexicalAnalyzer(const string& input_file_name, const string& outpu
 
     return tokens;
 }
-
-#endif // LEXICAL_ANALYZER
