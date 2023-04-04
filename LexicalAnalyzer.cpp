@@ -33,7 +33,6 @@ vector<Token> Lexer::parser(){
             for (int i = 0; i < input.length(); i++) {
                 char c = input[i];
                 int next_state = 0;
-
                 if (isEnd == false) {
                     // get column -> get next state
                     int col = this->CHAR_TO_COL.at(c);

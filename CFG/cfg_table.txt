@@ -1,0 +1,93 @@
+=== LEFT RECURSION REMOVED ===
+R1   =>  R2 %% R10 R14
+R2   =>  R3 | null
+R3   =>  R4 | R4 R3
+R4   =>  function <identifier> [ R5 ] R10 R9
+R5   =>  R6 | null
+R6   =>  R7 | R7, R6
+R7   =>  R13 : R8
+R8   =>  int | boolean | real
+R9   =>  { R14 }
+R10  =>  R11 | null
+R11  =>  R12 ; | R12 ; R11
+R12  =>  R8 R13
+R13  =>  <identifier> | <identifier>, R13
+R14  =>  R15 | R15 R14
+R15  =>  R16 | R17 | R18 | R19 | R20 | R21 | R22
+R16  =>  { R14 }
+R17  =>  <identifier> = R25
+R18  =>  if ( R23 ) R15 endif | if ( R23 ) R15 else R15 endif
+R19  =>  return ; | return R25 ;
+R20  =>  put ( R25 ) ;
+R21  =>  get ( R13 ) ;
+R22  =>  while ( R23 ) R15
+R23  =>  R25 R24 R25
+R24  =>  == | ^= | > | < | => | =<
+R25  =>  R26 R25'
+R25' =>  + R26 R25' | - R26 R25' | null
+R26  =>  R27 R26'
+R26' =>  * R27 R26' | / R27 R26' | null
+R27  =>  - R28 | R28
+R28  =>  <identifier> | <integer> | <identifier> ( R13 ) | ( R25 ) | <real> | true | false
+R29  =>  
+
+
+R1, R2
+FIRST(R1) = FIRST(R2) = {null, FIRST(R3)} = {null, FIRST(R4)} = {"function", null}
+
+R3, R4
+FIRST(R3) = FIRST(R4) = {"function"}
+
+R5
+FIRST(R5) = {null, FIRST(R6)} = {null, FIRST(R7)} = {null, FIRST(R13)} = {null, id}
+
+R6, R7, R13
+FIRST(R6) = FIRST(R7) = FIRST(R13) = {id}
+
+R9
+FIRST(R9) = { "{" }
+
+R10
+FIRST(R10) = {null, FIRST(R11)} = {null, FIRST(12)} = {null, FIRST(R8)} = {null, "int", "boolean", "real"}
+
+R11, R12, R8
+FIRST(R11) = FIRST(12) = FIRST(R8) = {"int", "boolean", "real"}
+
+R14, R15
+FIRST(R14) = FIRST(R15) = {FIRST(R16), FIRST(R17), FIRST(R18), FIRST(R19), FIRST(R20), FIRST(R21), FIRST(R22)} = { "{", id, "if", "return", "put", "get", "while" }
+
+R16
+FIRST(R16) = { "{" }
+
+R17
+FIRST(R17) = { id }
+
+R18
+FIRST(R18) = { "if" }
+
+R19
+FIRST(R19) = { "return" }
+
+R20
+FIRST(R20) = { "put" }
+
+R21
+FIRST(R21) = { "get" }
+
+R22
+FIRST(R22) = { "while" }
+
+R23, R25, R26, R27
+FIRST(R23) = FIRST(R25) = FIRST(R26) = FIRST(R27) = {"-", FIRST(R28)} = {"-", id, integer, "(", real, true, false}
+
+R24
+FIRST(R24) = {"==", "^=", ">", "<", "=>", "=<"}
+
+R25'
+FIRST(R25') = {"+", "-", null}
+
+R26'
+FIRST(26') = {"*", "/", null}
+
+R28
+FIRST(R28) = {id, integer, "(", real, true, false}
