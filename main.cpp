@@ -6,10 +6,11 @@ Team :
     * Hoang Nguyen ( Kyle )
     * Yamato Eguchi
 */
+
 #include <iostream>
 #include <fstream>
-#include "LexicalAnalyzer.h"
-#include "LexicalAnalyzer.cpp"
+
+#include "Lexer.cpp"
 
 using std::cout;
 
@@ -44,9 +45,23 @@ int main(int argc, char* argv[])
         abort();
     }
 
-    Lexer* l1 = new Lexer(input_file_name, output_file_name);
-    l1->parser();
+    Lexer lexical_analyzer(input_file_name, output_file_name);
+    lexical_analyzer.print_tokens();
+
+    // cout << std::endl;
+    // cout << std::endl;
+
+    // Token token = lexical_analyzer.get_next_token();
+    // token.print_token();
+    // Token token1 = lexical_analyzer.get_next_token();
+    // token1.print_token();
+    // Token token2 = lexical_analyzer.get_next_token();
+    // token2.print_token();
+
+    // cout << std::endl;
+    // cout << std::endl;
+
+    // lexical_analyzer.print_tokens();
 
     return 0;
-}
-
+};
