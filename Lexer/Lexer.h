@@ -3,44 +3,15 @@
 
 #include <deque>
 #include <fstream>
-#include <iostream>
 #include <stdexcept>
-#include <string>
 #include <unordered_map>
 #include <vector>
 
-using std::cout;
+#include "./Token/Token.cpp"
+
 using std::deque;
-using std::string;
 using std::unordered_map;
 using std::vector;
-
-// define token types
-enum class TokenType {
-    IDENTIFIER,
-    KEYWORD,
-    INTEGER,
-    REAL,
-    OPERATOR,
-    SEPARATOR,
-};
-
-// define struct to hold lexeme information
-struct Token {
-    TokenType type;
-    string type_str;
-    string lexeme;
-
-    Token(TokenType type, string type_str, string lexeme ) {
-        this->type = type;
-        this->type_str = type_str;
-        this->lexeme = lexeme;
-    }
-
-    void print_token() {
-        cout <<     "token: " << type_str << " ,      lexeme: " << lexeme << "\n";
-    }
-};
 
 class Lexer
 {

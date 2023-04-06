@@ -13,6 +13,7 @@ class PredictiveParserTable {
 
     public:
         PredictiveParserTable() = default;
+        
 
     private:
         static const string PREDICTIVE_PARSER_TABLE[50][50][10];
