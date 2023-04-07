@@ -1,7 +1,7 @@
 #ifndef LEXER_CPP
 #define LEXER_CPP
 
-#include "Lexer.h"
+#include "./Lexer.h"
 
 Lexer::Lexer(string& input_file_name)
 {   

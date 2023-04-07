@@ -1,3 +1,6 @@
+#ifndef TOKEN_CPP
+#define TOKEN_CPP
+
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -37,3 +40,5 @@ struct Token {
         output_file <<     "current token: " << type_str << " ,      lexeme: " << lexeme << "\n";
     }
 };
+
+#endif // TOKEN_CPP

@@ -1,5 +1,5 @@
-#ifndef LEXER
-#define LEXER
+#ifndef LEXER_H
+#define LEXER_H
 
 #include <deque>
 #include <fstream>
@@ -40,4 +40,4 @@ class Lexer {
         void init();
 };
 
-#endif // LEXER
+#endif // LEXER_H

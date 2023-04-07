@@ -18,7 +18,7 @@ class PredictiveParserTable {
         PredictiveParserTable() = default;
         ~PredictiveParserTable() = default;
 
-        vector<string> get_next_production(string lhs, string incoming_token);
+        vector<string> get_next_step(string lhs, string incoming_token);
 
     private:
         static const vector<vector<vector<string>>> PREDICTIVE_PARSER_TABLE;

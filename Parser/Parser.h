@@ -24,9 +24,18 @@ class PredictiveParser {
         PredictiveParser(string& input_file_name);
         ~PredictiveParser() = default;
 
+        // getters
         Lexer get_lexer() const;
+
+        // modifiers
+        void push_to_stack(vector<string>& rhs);
+
+        // parsers
         bool parse_to_outfile(string& output_file_name);
+
+        // print helpers
         void print_current_stack_to_outfile(ofstream& out_file);
+        void print_production(ofstream& out_file, string& lhs, vector<string> rhs);
 
     private:
         stack<string> _parser_stack;
@@ -36,4 +45,4 @@ class PredictiveParser {
         static const unordered_set<string> TERMINAL_SET;
 };
 
-#endif // PREDICTIVE_PARSER
+#endif // PREDICTIVE_PARSER_H

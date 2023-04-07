@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-sudo chown 770 parse
+clang++ -std=c++17 main.cpp -o parse
 sudo chmod u+x parse
 
 $SCRIPT_DIR/parse $1

@@ -10,7 +10,6 @@ Team :
 #include <fstream>
 
 #include "./Parser/Parser.cpp"
-#include "./Parser/ParserTable/ParserTable.cpp"
 
 using std::cout;
 
