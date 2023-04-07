@@ -30,10 +30,10 @@ struct Token {
     }
 
     void print_token() {
-        cout <<     "token: " << type_str << " ,      lexeme: " << lexeme << "\n";
+        cout <<     "current token: " << type_str << " ,      lexeme: " << lexeme << "\n";
     }
 
     void print_token_to_outfile (ofstream& output_file) {
-        output_file <<     "token: " << type_str << " ,      lexeme: " << lexeme << "\n";
+        output_file <<     "current token: " << type_str << " ,      lexeme: " << lexeme << "\n";
     }
 };
