@@ -18,6 +18,7 @@ class Lexer {
         Lexer() = default;
         Lexer(string& input_file_name);
         ~Lexer();
+
         void print_tokens();
         deque<Token>& get_tokens();
         Token get_next_token();
@@ -26,7 +27,6 @@ class Lexer {
 
     private:
         string input_file_name;
-        // string output_file_name;
         deque<Token> _tokens;
         static const unordered_map<char, int> CHAR_TO_COL;
         static const int TRANSITION_TABLE[128][128];

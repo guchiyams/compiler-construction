@@ -25,8 +25,8 @@ class PredictiveParser {
         ~PredictiveParser() = default;
 
         Lexer get_lexer() const;
-
         bool parse_to_outfile(string& output_file_name);
+        void print_current_stack_to_outfile(ofstream& out_file);
 
     private:
         stack<string> _parser_stack;

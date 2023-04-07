@@ -26,6 +26,9 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
     if (out_file.is_open()) {
         // while parser stack is not empty
         while (!_parser_stack.empty()) {
+            // print current stack
+            this->print_current_stack_to_outfile(out_file);
+
             // get top of stack
             string top_of_stack = _parser_stack.top();
 
@@ -73,16 +76,6 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
                 }
             }
 
-            // print current stack
-            // stack<string> parser_stack_copy(_parser_stack);
-            // cout << "CURRENT STACK: \"";
-            // while(!parser_stack_copy.empty()) {
-            //     std::cout << parser_stack_copy.top() << " ";
-            //     parser_stack_copy.pop();
-            // }
-            // cout << "\"" << std::endl;
-
-
             // close output file
             out_file << std::endl;
         }
@@ -95,6 +88,23 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
     out_file << "successfully parsed input. input is valid." << std::endl;
     out_file.close();
     return true;
+}
+
+void PredictiveParser::print_current_stack_to_outfile(ofstream& out_file) {
+    // print current stack
+    stack<string> parser_stack_copy(this->_parser_stack);
+    string stack_reversed = "";
+    out_file << "current stack: \"";
+    while(!parser_stack_copy.empty()) {
+        // std::cout << parser_stack_copy.top() << " ";
+        stack_reversed.append(parser_stack_copy.top());
+        stack_reversed.append(" ");
+        parser_stack_copy.pop();
+    }
+    for (auto elem : stack_reversed) {
+        out_file << elem;
+    }
+    out_file << "\"" << std::endl;
 }
 
 const unordered_set<string> PredictiveParser::TERMINAL_SET({
