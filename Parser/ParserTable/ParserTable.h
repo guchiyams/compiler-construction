@@ -21,9 +21,9 @@ class PredictiveParserTable {
         vector<string> get_next_step(string lhs, string incoming_token);
 
     private:
-        static const vector<vector<vector<string>>> PREDICTIVE_PARSER_TABLE;
-        static const unordered_map<string, int> LEXEME_TO_COL;
         static const unordered_map<string, int> NONTERMINAL_TO_ROW;
+        static const unordered_map<string, int> LEXEME_TO_COL;
+        static const vector<vector<vector<string>>> PREDICTIVE_PARSER_TABLE;
 };
 
 #endif // PARSER_TABLE_H

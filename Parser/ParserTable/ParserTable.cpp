@@ -18,24 +18,6 @@ vector<string> PredictiveParserTable::get_next_step(string lhs, string incoming_
     return PREDICTIVE_PARSER_TABLE[row][col];
 }
 
-// predictive parser table column dicitonary
-const unordered_map<string, int> PredictiveParserTable::LEXEME_TO_COL {
-    // GENERALIZED TERMINALS
-    { "IDENTIFIER", 1 }, { "INTEGER", 2 }, { "REAL", 3 },
-    
-    // KEYWORDS
-    { "function", 0 }, { "int", 4 }, { "boolean", 5 }, { "real", 6 }, { "if", 13 }, { "else", 14 }, { "endif", 15 }, {"return", 16}, { "put", 17 }, { "get", 18 }, { "while", 19 },
-
-    // BOOLEAN VALUE
-    { "true", 20 }, { "false", 21 },
-
-    // OPERATORS
-    { "+", 22 }, { "-", 23 }, { "*", 24 }, { "/", 25 }, { "==", 26 }, { "^=", 27 }, { ">", 28 }, { "<", 29 }, { "=>", 30 }, { "=<", 31 },
-
-    // SEPARATORS
-    { "{", 7 }, { "}", 8}, { "(", 9 }, { ")", 10 }, { "[", 11 }, { "]", 12 }, { ":", 32 }, { ";", 33 }, { ",", 34 }, { "%", 35 }, { "$", 36 }
-};
-
 const unordered_map<string, int> PredictiveParserTable::NONTERMINAL_TO_ROW {
     {"<Rat23S>"  ,                       0 },
     {"<Opt Function Definitions>"  ,     1 },
@@ -75,6 +57,24 @@ const unordered_map<string, int> PredictiveParserTable::NONTERMINAL_TO_ROW {
     {"<Factor>"  ,                      35 },
     {"<Primary>"  ,                     36 },
     {"<Primary>\'",                     37 },
+};
+
+// predictive parser table column dicitonary
+const unordered_map<string, int> PredictiveParserTable::LEXEME_TO_COL {
+    // GENERALIZED TERMINALS
+    { "IDENTIFIER", 1 }, { "INTEGER", 2 }, { "REAL", 3 },
+    
+    // KEYWORDS
+    { "function", 0 }, { "int", 4 }, { "boolean", 5 }, { "real", 6 }, { "if", 13 }, { "else", 14 }, { "endif", 15 }, {"return", 16}, { "put", 17 }, { "get", 18 }, { "while", 19 },
+
+    // BOOLEAN VALUE
+    { "true", 20 }, { "false", 21 },
+
+    // OPERATORS
+    { "+", 22 }, { "-", 23 }, { "*", 24 }, { "/", 25 }, { "==", 26 }, { "^=", 27 }, { ">", 28 }, { "<", 29 }, { "=>", 30 }, { "=<", 31 },
+
+    // SEPARATORS
+    { "{", 7 }, { "}", 8}, { "(", 9 }, { ")", 10 }, { "[", 11 }, { "]", 12 }, { ":", 32 }, { ";", 33 }, { ",", 34 }, { "%", 35 }, { "$", 36 }
 };
 
 const vector<vector<vector<string>>> PredictiveParserTable::PREDICTIVE_PARSER_TABLE = {
