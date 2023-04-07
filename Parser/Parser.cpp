@@ -18,7 +18,7 @@ Lexer PredictiveParser::get_lexer() const {
     return _lexer;
 }
 
-void PredictiveParser::push_to_stack(vector<string>& rhs) {
+void PredictiveParser::push_list_to_stack(vector<string>& rhs) {
     // push the rhs in reverse order into the stack
     for (auto it = rhs.rbegin(); it != rhs.rend(); ++it) {
         _parser_stack.push(*it);
@@ -42,7 +42,7 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
             // get incoming token
             Token token = _lexer.get_next_token();
 
-            // get token information
+            // get token details
             TokenType token_type = token.type;
             string token_type_str = token.type_str;
             string curr_token = token.lexeme;
@@ -59,7 +59,7 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
                 _parser_stack.pop();
                 continue;
             }
-            
+
             // print current token retrieved from lexer
             token.print_token_to_outfile(out_file);
 
@@ -79,7 +79,9 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
                     // print verbose message about the error to terminal
                     cout << "PARSING ERROR. Invalid input string." << std::endl;
                     cout << "terminals do not match: \""<< top_of_stack << "\" != \"" << curr_token << "\"" << std::endl;
-                    cout << "Check ouput/" << output_file_name  << " for more information." << std::endl;
+                    cout << "Check ouput/" << output_file_name  << " for more details." << std::endl;
+
+                    // exit gracefully
                     exit(1);
                 }
             }
@@ -96,17 +98,20 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
                     // pop the nonterminal
                     _parser_stack.pop();
 
-                    this->push_to_stack(rhs);
+                    // push the rhs of production used to the stack
+                    this->push_list_to_stack(rhs);
                 }
                 // else error
                 else {
                     // print verbose message about the error to file
-                    out_file << "\nno production found: \""<< top_of_stack << "\" => \"" << curr_token << "\" ..." << std::endl;
+                    out_file << "\nno production found in the form: \""<< top_of_stack << "\" => \"" << curr_token << "\" ..." << std::endl;
 
                     // print verbose message about the error to terminal
                     cout << "PARSING ERROR. Invalid input string." << std::endl;
                     cout << "no production found in the form: "<< top_of_stack << " => " << curr_token << " ..." << std::endl;
-                    cout << "Check ouput/" << output_file_name  << " for more information." << std::endl;
+                    cout << "Check ouput/" << output_file_name  << " for more details." << std::endl;
+
+                    // exit gracefully
                     exit(1);
                 }
             }
@@ -114,7 +119,7 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
         }
     }
     else {
-        cout << "Files not open. Aborting..." << std::endl;
+        cout << "Files not open. Please check the input directory..." << std::endl;
         exit(1);
     }
 
@@ -123,20 +128,32 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
 
     // print success message to terminal
     cout << "successfully parsed input. input is valid." << std::endl;
-    cout << "Check ouput/" << output_file_name  << " for more information." << std::endl;
+    cout << "Check ouput/" << output_file_name  << " for more details." << std::endl;
+
+    // close file
     out_file.close();
+
     return true;
 }
 
 void PredictiveParser::print_current_stack_to_outfile(ofstream& out_file) {
+    // make a copy of the current parser stack
     stack<string> parser_stack_copy(this->_parser_stack);
+
+    // initialize stack string
     string stack_reversed = "";
+
+    // begin printing stack
     out_file << "current stack: ";
+
+    // stack can only be iterated by popping. pop until empty and append popped value to stack string
     while(!parser_stack_copy.empty()) {
         stack_reversed.append(parser_stack_copy.top());
         stack_reversed.append(" ");
         parser_stack_copy.pop();
     }
+    
+    // print the stack string to the output file
     for (auto elem : stack_reversed) {
         out_file << elem;
     }
@@ -148,7 +165,6 @@ void PredictiveParser::print_production(ofstream& out_file, string& lhs, vector<
     for (auto elem : rhs) out_file << elem << " ";
     out_file << std::endl;
 }
-
 
 const unordered_set<string> PredictiveParser::TERMINAL_SET({
     "function",

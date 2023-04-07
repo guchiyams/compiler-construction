@@ -22,7 +22,7 @@ class PredictiveParserTable {
 
     private:
         static const unordered_map<string, int> NONTERMINAL_TO_ROW;
-        static const unordered_map<string, int> LEXEME_TO_COL;
+        static const unordered_map<string, int> TERMINAL_TO_COL;
         static const vector<vector<vector<string>>> PREDICTIVE_PARSER_TABLE;
 };
 

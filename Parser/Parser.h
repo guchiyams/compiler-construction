@@ -28,7 +28,7 @@ class PredictiveParser {
         Lexer get_lexer() const;
 
         // modifiers
-        void push_to_stack(vector<string>& rhs);
+        void push_list_to_stack(vector<string>& rhs);
 
         // parsers
         bool parse_to_outfile(string& output_file_name);
