@@ -17,13 +17,18 @@ class Lexer {
     public:
         Lexer() = default;
         Lexer(string& input_file_name);
-        ~Lexer();
-
+        ~Lexer() = default;
+        
+        // print all tokens in order
         void print_tokens();
+
+        // getters
         deque<Token>& get_tokens();
         Token get_next_token();
-        Token pop_front();
         Token get_next_token_and_pop();
+
+        // modifiers
+        Token pop_front();
 
     private:
         string input_file_name;
@@ -31,6 +36,7 @@ class Lexer {
         static const unordered_map<char, int> CHAR_TO_COL;
         static const int TRANSITION_TABLE[128][128];
         
+        // runs lexical analysis
         void init();
 };
 

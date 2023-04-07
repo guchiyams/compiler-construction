@@ -1,8 +1,6 @@
 #ifndef PARSER_TABLE_CPP
 #define PARSER_TABLE_CPP
 
-#include <stdexcept>
-
 #include "./ParserTable.h"
 
 vector<string> PredictiveParserTable::get_next_production(string lhs, string incoming_token) {
@@ -17,79 +15,71 @@ vector<string> PredictiveParserTable::get_next_production(string lhs, string inc
         return vector<string>();
     }
 
-    // print current table status for debugging
-    // cout << "CURRENT TABLE ROW:    \"" << row << "\"" << std::endl;
-    // cout << "CURRENT TABLE COL:    \"" << col << "\"" << std::endl;
-    // vector<string> rhs = PREDICTIVE_PARSER_TABLE[row][col];
-    // cout << "CURRENT RHS:          \"";
-    // for (auto elem : rhs) {
-    //     std::cout << elem << " ";
-    // }
-    // cout << "\"" << std::endl;
-
     return PREDICTIVE_PARSER_TABLE[row][col];
 }
 
 // predictive parser table column dicitonary
 const unordered_map<string, int> PredictiveParserTable::LEXEME_TO_COL {
-    { "function", 0 },
-    { "IDENTIFIER", 1 },        // TokenType::IDENTIFIER
-    { "INTEGER", 2 },           // TokenType::INTEGER
-    { "REAL", 3 },              // TokenType::REAL
-    { "int", 4 }, { "boolean", 5 }, { "real", 6 },
-    { "{", 7 }, { "}", 8}, { "(", 9 }, { ")", 10 }, { "[", 11 }, { "]", 12 },
-    { "if", 13 }, { "else", 14 }, { "endif", 15 }, {"return", 16},
-    { "put", 17 }, { "get", 18 }, { "while", 19 },
+    // GENERALIZED TERMINALS
+    { "IDENTIFIER", 1 }, { "INTEGER", 2 }, { "REAL", 3 },
+    
+    // KEYWORDS
+    { "function", 0 }, { "int", 4 }, { "boolean", 5 }, { "real", 6 }, { "if", 13 }, { "else", 14 }, { "endif", 15 }, {"return", 16}, { "put", 17 }, { "get", 18 }, { "while", 19 },
+
+    // BOOLEAN VALUE
     { "true", 20 }, { "false", 21 },
-    { "+", 22 }, { "-", 23 }, { "*", 24 }, { "/", 25 },
-    { "==", 26 }, { "^=", 27 }, { ">", 28 }, { "<", 29 }, { "=>", 30 }, { "=<", 31 },
-    { ":", 32 }, { ";", 33 }, { ",", 34 }, { "%", 35 }, { "$", 36 }
+
+    // OPERATORS
+    { "+", 22 }, { "-", 23 }, { "*", 24 }, { "/", 25 }, { "==", 26 }, { "^=", 27 }, { ">", 28 }, { "<", 29 }, { "=>", 30 }, { "=<", 31 },
+
+    // SEPARATORS
+    { "{", 7 }, { "}", 8}, { "(", 9 }, { ")", 10 }, { "[", 11 }, { "]", 12 }, { ":", 32 }, { ";", 33 }, { ",", 34 }, { "%", 35 }, { "$", 36 }
 };
 
 const unordered_map<string, int> PredictiveParserTable::NONTERMINAL_TO_ROW {
-    {"<Rat23S>"  ,  0 },
-    {"<Opt Function Definitions>"  ,  1 },
-    {"<Function Definitions>"  ,  2 },
-    {"<Function Definitions>\'",  3 },
-    {"<Function>"  ,  4 },
-    {"<Opt Parameter List>"  ,  5 },
-    {"<Parameter List>"  ,  6 },
-    {"<Parameter List>'",  7 },
-    {"<Parameter>"  ,  8 },
-    {"<Qualifier>"  ,  9 },
-    {"<Body>"  , 10 },
-    {"<Opt Declaration List>"  , 11 },
-    {"<Declaration List>"  , 12 },
-    {"<Declaration List>\'", 13 },
-    {"<Declaration>"  , 14 },
-    {"<IDs>"  , 15 },
-    {"<IDs>\'", 16 },
-    {"<Statement List>"  , 17 },
-    {"<Statement List>\'", 18 },
-    {"<Statement>"  , 19 },
-    {"<Compound>"  , 20 },
-    {"<Assign>"  , 21 },
-    {"<If>"  , 22 },
-    {"<If>\'", 23 },
-    {"<Return>"  , 24 },
-    {"<Return>\'", 25 },
-    {"<Print>"  , 26 },
-    {"<Scan>"  , 27 },
-    {"<While>"  , 28 },
-    {"<Condition>"  , 29 },
-    {"<Relop>"  , 30 },
-    {"<Expression>"  , 31 },
-    {"<Expression>\'", 32 },
-    {"<Term>"  , 33 },
-    {"<Term>\'", 34 },
-    {"<Factor>"  , 35 },
-    {"<Primary>"  , 36 },
-    {"<Primary>\'", 37 },
+    {"<Rat23S>"  ,                       0 },
+    {"<Opt Function Definitions>"  ,     1 },
+    {"<Function Definitions>"  ,         2 },
+    {"<Function Definitions>\'",         3 },
+    {"<Function>"  ,                     4 },
+    {"<Opt Parameter List>"  ,           5 },
+    {"<Parameter List>"  ,               6 },
+    {"<Parameter List>'",                7 },
+    {"<Parameter>"  ,                    8 },
+    {"<Qualifier>"  ,                    9 },
+    {"<Body>"  ,                        10 },
+    {"<Opt Declaration List>"  ,        11 },
+    {"<Declaration List>"  ,            12 },
+    {"<Declaration List>\'",            13 },
+    {"<Declaration>"  ,                 14 },
+    {"<IDs>"  ,                         15 },
+    {"<IDs>\'",                         16 },
+    {"<Statement List>"  ,              17 },
+    {"<Statement List>\'",              18 },
+    {"<Statement>"  ,                   19 },
+    {"<Compound>"  ,                    20 },
+    {"<Assign>"  ,                      21 },
+    {"<If>"  ,                          22 },
+    {"<If>\'",                          23 },
+    {"<Return>"  ,                      24 },
+    {"<Return>\'",                      25 },
+    {"<Print>"  ,                       26 },
+    {"<Scan>"  ,                        27 },
+    {"<While>"  ,                       28 },
+    {"<Condition>"  ,                   29 },
+    {"<Relop>"  ,                       30 },
+    {"<Expression>"  ,                  31 },
+    {"<Expression>\'",                  32 },
+    {"<Term>"  ,                        33 },
+    {"<Term>\'",                        34 },
+    {"<Factor>"  ,                      35 },
+    {"<Primary>"  ,                     36 },
+    {"<Primary>\'",                     37 },
 };
 
 const vector<vector<vector<string>>> PredictiveParserTable::PREDICTIVE_PARSER_TABLE = {
-/* ROW_INDEX \ COL_INDEX    {   0,                                                              1,                                  2,                          3,                          4,                          5,                          6,                          7,                      8,              9,                          10,             11,     12,             13,                                         14,                         15,         16,                     17,                                 18,                                 19,                                     20,                         21,                         22,                         23,                         24,                         25,                         26,             27,             28,             29,             30,             31,             32,             33,             34,             35,                                 36                  } */
-/* ROW[00] - R01  */                            {   { "<Opt Function Definitions>", "%", "%", "<Opt Declaration List>", "<Statement List>"  },          {},                                             {},                                             {},                                             {},                                                 {},                                                 {},                                                 {},                                         {},             {},                                             {},             {},     {},             {},                                                         {},                                 {},         {},                                         {},                                         {},                                         {},                                                     {},                                             {},                                             {},                                     {},                                             {},                                 {},                                 {},             {},             {},             {},             {},             {},             {},             {},             {},                 { "<Opt Function Definitions>", "%", "%", "<Opt Declaration List>", "<Statement List>" },   { "<Empty>" },      },
+/* ROW_INDEX \ COL_INDEX                        {   0                                                                                                   1,                                              2,                                              3,                                              4,                                                  5,                                                  6,                                                  7,                                          8,              9,                                              10,             11,     12,             13,                                                         14,                                 15,         16,                                         17,                                         18,                                         19,                                                     20,                                             21,                                             22,                                     23,                                             24,                                 25,                                 26,             27,             28,             29,             30,             31,             32,             33,             34,                 35,                                                                                         36                  } */
+/* ROW[00] - <Rat23S>  */                       {   { "<Opt Function Definitions>", "%", "%", "<Opt Declaration List>", "<Statement List>"  },          {},                                             {},                                             {},                                             {},                                                 {},                                                 {},                                                 {},                                         {},             {},                                             {},             {},     {},             {},                                                         {},                                 {},         {},                                         {},                                         {},                                         {},                                                     {},                                             {},                                             {},                                     {},                                             {},                                 {},                                 {},             {},             {},             {},             {},             {},             {},             {},             {},                 { "<Opt Function Definitions>", "%", "%", "<Opt Declaration List>", "<Statement List>" },   { "<Empty>" },      },
 /* ROW[01] - <Opt Function Definitions>  */     {   { "<Function Definitions>"  },                                                                      {},                                             {},                                             {},                                             {},                                                 {},                                                 {},                                                 {},                                         {},             {},                                             {},             {},     {},             {},                                                         {},                                 {},         {},                                         {},                                         {},                                         {},                                                     {},                                             {},                                             {},                                     {},                                             {},                                 {},                                 {},             {},             {},             {},             {},             {},             {},             {},             {},                 { "<Empty>" },                                                                              {},                 },
 /* ROW[02] - <Function Definitions>  */         {   { "<Function>", "<Function Definitions>\'" },                                                       {},                                             {},                                             {},                                             {},                                                 {},                                                 {},                                                 {},                                         {},             {},                                             {},             {},     {},             {},                                                         {},                                 {},         {},                                         {},                                         {},                                         {},                                                     {},                                             {},                                             {},                                     {},                                             {},                                 {},                                 {},             {},             {},             {},             {},             {},             {},             {},             {},                 {},                                                                                         {},                 },
 /* ROW[03] - <Function Definitions>' */         {   { "<Function Definitions>" },                                                                       {},                                             {},                                             {},                                             {},                                                 {},                                                 {},                                                 {},                                         {},             {},                                             {},             {},     {},             {},                                                         {},                                 {},         {},                                         {},                                         {},                                         {},                                                     {},                                             {},                                             {},                                     {},                                             {},                                 {},                                 {},             {},             {},             {},             {},             {},             {},             {},             {},                 { "<Empty>" },                                                                              {},                 },
@@ -128,6 +118,7 @@ const vector<vector<vector<string>>> PredictiveParserTable::PREDICTIVE_PARSER_TA
 /* ROW[36] - <Primary>  */                      {   {},                                                                                                 { "IDENTIFIER", "<Primary>\'" },                { "INTEGER" },                                  { "REAL" },                                     {},                                                 {},                                                 {},                                                 {},                                         {},             { "(", "<Expression>", ")" },                   {},             {},     {},             {},                                                         {},                                 {},         {},                                         {},                                         {},                                         {},                                                     { "true" },                                     { "false" },                                    {},                                     {},                                             {},                                 {},                                 {},             {},             {},             {},             {},             {},             {},             {},             {},                 {},                                                                                         {},                 },
 /* ROW[37] - <Primary>' */                      {   {},                                                                                                 {},                                             {},                                             {},                                             {},                                                 {},                                                 {},                                                 {},                                         {},             { "(", "<IDs>", ")" },                          { "<Empty>" },  {},     {},             {},                                                         {},                                 {},         {},                                         {},                                         {},                                         {},                                                     {},                                             {},                                             { "<Empty>" },                          { "<Empty>" },                                  { "<Empty>" },                      { "<Empty>" },                      { "<Empty>" },  { "<Empty>" },  { "<Empty>" },  { "<Empty>" },  { "<Empty>" },  { "<Empty>" },  {},             { "<Empty>" },  {},                 {},                                                                                         {},                 },
 };
+
 // const unordered_map<string, int> PredictiveParserTable::NONTERMINAL_TO_ROW {
 //     {"R01"  ,  0 },
 //     {"R02"  ,  1 },

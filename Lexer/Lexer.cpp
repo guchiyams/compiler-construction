@@ -5,14 +5,8 @@
 
 Lexer::Lexer(string& input_file_name)
 {   
-    // cout << "initizalizing lexer..." << std::endl;
     this->input_file_name = input_file_name;
-    // this->output_file_name = output_file_name;
     this->init();
-}
-
-Lexer::~Lexer() {
-    // cout << "destructing lexer..." << std::endl;
 }
 
 void Lexer::init(){
@@ -25,20 +19,24 @@ void Lexer::init(){
         // while not end of input file, retreive input line
         string input = "";
         while (std::getline(in_file, input)) {
+            // set current state to initial state - 1
             int curr_state = 1;
             string lexeme = "";
             bool isEnd = false;
 
             // for each line, traverse character by character
             for (int i = 0; i < input.length(); i++) {
+                // retrieve char and initialize next_state
                 char c = input[i];
                 int next_state = 0;
+                
+                // if not end of file, get column -> get next state
                 if (isEnd == false) {
-                    // get column -> get next state
                     int col = this->CHAR_TO_COL.at(c);
                     next_state = TRANSITION_TABLE[curr_state][col];
-                } else {
-                    // don't go to next state - stay on current state
+                } 
+                // if end of file, don't go to next state - stay on current state
+                else {
                     next_state = curr_state;
                 }
 
@@ -49,7 +47,7 @@ void Lexer::init(){
 
                 // if next_state is accepting state, write into output file
                 switch (next_state) {
-                    // check for error state 12
+                    // check for error state 12 - throw exception
                     case 12:
                         throw std::invalid_argument("In invalid state - " + std::to_string(next_state) + " - coming from state: " + std::to_string(curr_state) + "\n");
 
@@ -122,23 +120,25 @@ void Lexer::init(){
                         break;
 
                     default:
-                        if (c != ' ') {
+                        // don't add white spaces to lexeme
+                        if (c != ' ' && c != '\n') {
                             lexeme += c;
                         }
+
+                        // if end of file
+                        //      -> set next state to current state's end of input state (column index 32)
+                        //      -> set isEnd bool variable to true, then decrement iterator to run again
                         if (i == input.length() - 1) {
                             if (isEnd == true) {
                                 continue;
-                            } else {
-                                // last token:
-                                //      -> set next state to current state's end of input state (column index 32)
-                                //      -> set isEnd bool variable to true, then decrement iterator to run again
+                            } 
+                            else {
                                 curr_state = TRANSITION_TABLE[next_state][32];
                                 isEnd = true;
                                 i--;
 
                                 continue;
                             }
-
                         }
                 }
                 // go to next state
@@ -146,12 +146,12 @@ void Lexer::init(){
             }
         }
 
-        // push the end input token
+        // push the end of input token
         _tokens.push_back(Token(TokenType::END_INPUT, "END_INPUT", "$"));
     }
     else {
         cout << "Files not open. Aborting..." << std::endl;
-        abort();
+        exit(1);
     }
 
     // close opened files
@@ -174,17 +174,18 @@ Token Lexer::get_next_token() {
     return next_token;
 }
 
+Token Lexer::get_next_token_and_pop() {
+    Token next_token = this->_tokens.front();
+    this->_tokens.pop_front();
+    return next_token;
+}
+
 Token Lexer::pop_front() {
     Token next_token = this->_tokens.front();
     this->_tokens.pop_front();
     return next_token;
 }
 
-Token Lexer::get_next_token_and_pop() {
-    Token next_token = this->_tokens.front();
-    this->_tokens.pop_front();
-    return next_token;
-}
 
 const unordered_map<char, int> Lexer::CHAR_TO_COL {
     // ALPHA [a-z]

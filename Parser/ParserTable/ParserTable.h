@@ -2,6 +2,7 @@
 #define PARSER_TABLE_H
 
 #include <iostream>
+#include <stdexcept>
 #include <string>
 #include <unordered_map>
 #include <vector>
