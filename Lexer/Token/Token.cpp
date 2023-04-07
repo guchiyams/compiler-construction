@@ -1,7 +1,9 @@
 #include <iostream>
+#include <ostream>
 #include <string>
 
 using std::cout;
+using std::ofstream;
 using std::string;
 
 // define token types
@@ -12,6 +14,7 @@ enum class TokenType {
     REAL,
     OPERATOR,
     SEPARATOR,
+    END_INPUT
 };
 
 // define struct to hold lexeme information
@@ -28,5 +31,9 @@ struct Token {
 
     void print_token() {
         cout <<     "token: " << type_str << " ,      lexeme: " << lexeme << "\n";
+    }
+
+    void print_token_to_outfile (ofstream& output_file) {
+        output_file <<     "token: " << type_str << " ,      lexeme: " << lexeme << "\n";
     }
 };

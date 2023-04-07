@@ -1,25 +1,24 @@
+#ifndef LEXER_CPP
+#define LEXER_CPP
+
 #include "Lexer.h"
 
-Lexer::Lexer( string& input_file_name , string& output_file_name)
-{
+Lexer::Lexer(string& input_file_name)
+{   
+    // cout << "initizalizing lexer..." << std::endl;
     this->input_file_name = input_file_name;
-    this->output_file_name = output_file_name;
-
+    // this->output_file_name = output_file_name;
     this->init();
 }
 
-Lexer::~Lexer()
-{
-    cout << "Destructor is called\n";
+Lexer::~Lexer() {
+    // cout << "destructing lexer..." << std::endl;
 }
 
 void Lexer::init(){
-       // open input and output files
+    // open input and output files
     std::ifstream in_file("./input/" + this->input_file_name);
-    std::ofstream out_file("./output/" + this->output_file_name, std::ios::trunc);
-
-    // initialize vector of tokens
-    // vector<Token> tokens;
+    // std::ofstream out_file("./output/" + this->output_file_name, std::ios::trunc);
 
     // check if input file and output file is successfully open
     if (in_file.is_open() /*&& out_file.is_open()*/) {
@@ -44,9 +43,9 @@ void Lexer::init(){
                 }
 
                 // print to file for debugging:
-                    out_file << "CURRENT CHAR: \"" << c << "\"\n";
-                    out_file << "CURRENT STATE: " << curr_state << "\n";
-                    out_file << "NEXT STATE:    " << next_state << "\n\n";
+                    // out_file << "CURRENT CHAR: \"" << c << "\"\n";
+                    // out_file << "CURRENT STATE: " << curr_state << "\n";
+                    // out_file << "NEXT STATE:    " << next_state << "\n\n";
 
                 // if next_state is accepting state, write into output file
                 switch (next_state) {
@@ -146,14 +145,18 @@ void Lexer::init(){
                 curr_state = next_state;
             }
         }
-    } else {
+
+        // push the end input token
+        _tokens.push_back(Token(TokenType::END_INPUT, "END_INPUT", "$"));
+    }
+    else {
         cout << "Files not open. Aborting..." << std::endl;
         abort();
     }
 
     // close opened files
     in_file.close();
-    out_file.close();
+    // out_file.close();
 }
 
 void Lexer::print_tokens() {
@@ -162,11 +165,22 @@ void Lexer::print_tokens() {
     }
 }
 
-deque<Token> Lexer::get_tokens() {
+deque<Token>& Lexer::get_tokens() {
     return this->_tokens;
 }
 
 Token Lexer::get_next_token() {
+    Token next_token = this->_tokens.front();
+    return next_token;
+}
+
+Token Lexer::pop_front() {
+    Token next_token = this->_tokens.front();
+    this->_tokens.pop_front();
+    return next_token;
+}
+
+Token Lexer::get_next_token_and_pop() {
     Token next_token = this->_tokens.front();
     this->_tokens.pop_front();
     return next_token;
@@ -250,3 +264,5 @@ const int Lexer::TRANSITION_TABLE[128][128] = {
     { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 58,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3,  2, 50 },      // STATE_57 ->      IN boolean_a KEYWORD
     { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12, 12, 36, 36,  3,  2, 50 },      // STATE_58 ->      IN boolean_n KEYWORD
 };
+
+#endif // LEXER_CPP

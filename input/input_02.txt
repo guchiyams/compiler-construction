@@ -1,8 +1,3 @@
-function convert$ [fahr:int]
-{
-    return 5 * (fahr -32) / 9;
-}
-
 %%
 int    low,  high, step$;      ! declarations !
 
@@ -10,5 +5,5 @@ get (low, high, step$);
 while (low  <  high )  
     {  put (low);
         put (convert$ (low));
-        low ^=  low  +  step$;
+        low =  low  +  step$;
     } 

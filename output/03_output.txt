@@ -1,79 +1,516 @@
-token: KEYWORD   ,      lexeme: for
-token: SEPARATOR ,      lexeme: (
-token: KEYWORD   ,      lexeme: int
-token: IDENTIFIER,      lexeme: i
-token: OPERATOR  ,      lexeme: =
-token: INTEGER   ,      lexeme: 0
-token: SEPARATOR ,      lexeme: ;
-token: IDENTIFIER,      lexeme: i
-token: OPERATOR  ,      lexeme: <
-token: INTEGER   ,      lexeme: 3
-token: SEPARATOR ,      lexeme: ;
-token: IDENTIFIER,      lexeme: i
-token: OPERATOR  ,      lexeme: +
-token: OPERATOR  ,      lexeme: +
-token: SEPARATOR ,      lexeme: )
+parsing input...
+
+token: KEYWORD ,      lexeme: function
+<Rat23S> => <Opt Function Definitions> % % <Opt Declaration List> <Statement List> 
+
+token: KEYWORD ,      lexeme: function
+<Opt Function Definitions> => <Function Definitions> 
+
+token: KEYWORD ,      lexeme: function
+<Function Definitions> => <Function> <Function Definitions>' 
+
+token: KEYWORD ,      lexeme: function
+<Function> => function IDENTIFIER [ <Opt Parameter List> ] <Opt Declaration List> <Body> 
+
+token: KEYWORD ,      lexeme: function
+
+token: IDENTIFIER ,      lexeme: convert$
+
+token: SEPARATOR ,      lexeme: [
+
+token: IDENTIFIER ,      lexeme: fahr
+<Opt Parameter List> => <Parameter List> 
+
+token: IDENTIFIER ,      lexeme: fahr
+<Parameter List> => <Parameter> <Parameter List>' 
+
+token: IDENTIFIER ,      lexeme: fahr
+<Parameter> => <IDs> : <Qualifier> 
+
+token: IDENTIFIER ,      lexeme: fahr
+<IDs> => IDENTIFIER <IDs>' 
+
+token: IDENTIFIER ,      lexeme: fahr
+
+token: SEPARATOR ,      lexeme: :
+<IDs>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: :
+
+token: KEYWORD ,      lexeme: int
+<Qualifier> => int 
+
+token: KEYWORD ,      lexeme: int
+
+token: SEPARATOR ,      lexeme: ]
+<Parameter List>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: ]
+
 token: SEPARATOR ,      lexeme: {
-token: IDENTIFIER,      lexeme: x
-token: OPERATOR  ,      lexeme: +
-token: OPERATOR  ,      lexeme: =
-token: INTEGER   ,      lexeme: 2
-token: SEPARATOR ,      lexeme: ;
-token: SEPARATOR ,      lexeme: }
-token: KEYWORD   ,      lexeme: int
-token: IDENTIFIER,      lexeme: x
-token: OPERATOR  ,      lexeme: =
-token: REAL      ,      lexeme: .6
-token: SEPARATOR ,      lexeme: ;
-token: KEYWORD   ,      lexeme: int
-token: IDENTIFIER,      lexeme: y
-token: OPERATOR  ,      lexeme: =
-token: REAL      ,      lexeme: 9.9
-token: SEPARATOR ,      lexeme: ;
-token: KEYWORD   ,      lexeme: while
-token: SEPARATOR ,      lexeme: (
-token: IDENTIFIER,      lexeme: x
-token: OPERATOR  ,      lexeme: >
-token: IDENTIFIER,      lexeme: y
-token: SEPARATOR ,      lexeme: )
+<Opt Declaration List> => <Empty> 
+
 token: SEPARATOR ,      lexeme: {
-token: KEYWORD   ,      lexeme: if
-token: SEPARATOR ,      lexeme: (
-token: IDENTIFIER,      lexeme: x
-token: OPERATOR  ,      lexeme: =
-token: OPERATOR  ,      lexeme: =
-token: INTEGER   ,      lexeme: 100000
-token: SEPARATOR ,      lexeme: )
+<Body> => { <Statement List> } 
+
 token: SEPARATOR ,      lexeme: {
-token: IDENTIFIER,      lexeme: x
-token: OPERATOR  ,      lexeme: -
-token: OPERATOR  ,      lexeme: -
-token: SEPARATOR ,      lexeme: ;
-token: SEPARATOR ,      lexeme: }
-token: KEYWORD   ,      lexeme: else
-token: KEYWORD   ,      lexeme: if
+
+token: KEYWORD ,      lexeme: return
+<Statement List> => <Statement> <Statement List>' 
+
+token: KEYWORD ,      lexeme: return
+<Statement> => <Return> 
+
+token: KEYWORD ,      lexeme: return
+<Return> => return <Return>' 
+
+token: KEYWORD ,      lexeme: return
+
+token: INTEGER ,      lexeme: 5
+<Return>' => <Expression> ; 
+
+token: INTEGER ,      lexeme: 5
+<Expression> => <Term> <Expression>' 
+
+token: INTEGER ,      lexeme: 5
+<Term> => <Factor> <Term>' 
+
+token: INTEGER ,      lexeme: 5
+<Factor> => <Primary> 
+
+token: INTEGER ,      lexeme: 5
+<Primary> => INTEGER 
+
+token: INTEGER ,      lexeme: 5
+
+token: OPERATOR ,      lexeme: *
+<Term>' => * <Factor> <Term>' 
+
+token: OPERATOR ,      lexeme: *
+
 token: SEPARATOR ,      lexeme: (
-token: IDENTIFIER,      lexeme: x
-token: OPERATOR  ,      lexeme: =
-token: OPERATOR  ,      lexeme: =
-token: REAL      ,      lexeme: 25.939
-token: SEPARATOR ,      lexeme: )
-token: SEPARATOR ,      lexeme: {
-token: IDENTIFIER,      lexeme: x
-token: OPERATOR  ,      lexeme: +
-token: OPERATOR  ,      lexeme: +
-token: SEPARATOR ,      lexeme: ;
-token: SEPARATOR ,      lexeme: }
-token: KEYWORD   ,      lexeme: return
-token: IDENTIFIER,      lexeme: x
-token: SEPARATOR ,      lexeme: ;
-token: SEPARATOR ,      lexeme: }
-token: KEYWORD   ,      lexeme: int
-token: IDENTIFIER,      lexeme: thisfunction
+<Factor> => <Primary> 
+
 token: SEPARATOR ,      lexeme: (
+<Primary> => ( <Expression> ) 
+
+token: SEPARATOR ,      lexeme: (
+
+token: IDENTIFIER ,      lexeme: fahr
+<Expression> => <Term> <Expression>' 
+
+token: IDENTIFIER ,      lexeme: fahr
+<Term> => <Factor> <Term>' 
+
+token: IDENTIFIER ,      lexeme: fahr
+<Factor> => <Primary> 
+
+token: IDENTIFIER ,      lexeme: fahr
+<Primary> => IDENTIFIER <Primary>' 
+
+token: IDENTIFIER ,      lexeme: fahr
+
+token: OPERATOR ,      lexeme: -
+<Primary>' => <Empty> 
+
+token: OPERATOR ,      lexeme: -
+<Term>' => <Empty> 
+
+token: OPERATOR ,      lexeme: -
+<Expression>' => - <Term> <Expression>' 
+
+token: OPERATOR ,      lexeme: -
+
+token: INTEGER ,      lexeme: 32
+<Term> => <Factor> <Term>' 
+
+token: INTEGER ,      lexeme: 32
+<Factor> => <Primary> 
+
+token: INTEGER ,      lexeme: 32
+<Primary> => INTEGER 
+
+token: INTEGER ,      lexeme: 32
+
 token: SEPARATOR ,      lexeme: )
-token: SEPARATOR ,      lexeme: {
-token: KEYWORD   ,      lexeme: return
-token: IDENTIFIER,      lexeme: x
+<Term>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+<Expression>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+
+token: OPERATOR ,      lexeme: /
+<Term>' => / <Factor> <Term>' 
+
+token: OPERATOR ,      lexeme: /
+
+token: INTEGER ,      lexeme: 9
+<Factor> => <Primary> 
+
+token: INTEGER ,      lexeme: 9
+<Primary> => INTEGER 
+
+token: INTEGER ,      lexeme: 9
+
 token: SEPARATOR ,      lexeme: ;
+<Term>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: ;
+<Expression>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: ;
+
 token: SEPARATOR ,      lexeme: }
+<Statement List>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: }
+
+token: SEPARATOR ,      lexeme: %
+<Function Definitions>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: %
+
+token: SEPARATOR ,      lexeme: %
+
+token: KEYWORD ,      lexeme: int
+<Opt Declaration List> => <Declaration List> 
+
+token: KEYWORD ,      lexeme: int
+<Declaration List> => <Declaration> ; <Declaration List>' 
+
+token: KEYWORD ,      lexeme: int
+<Declaration> => <Qualifier> <IDs> 
+
+token: KEYWORD ,      lexeme: int
+<Qualifier> => int 
+
+token: KEYWORD ,      lexeme: int
+
+token: IDENTIFIER ,      lexeme: low
+<IDs> => IDENTIFIER <IDs>' 
+
+token: IDENTIFIER ,      lexeme: low
+
+token: SEPARATOR ,      lexeme: ,
+<IDs>' => , <IDs> 
+
+token: SEPARATOR ,      lexeme: ,
+
+token: IDENTIFIER ,      lexeme: high
+<IDs> => IDENTIFIER <IDs>' 
+
+token: IDENTIFIER ,      lexeme: high
+
+token: SEPARATOR ,      lexeme: ,
+<IDs>' => , <IDs> 
+
+token: SEPARATOR ,      lexeme: ,
+
+token: IDENTIFIER ,      lexeme: step$
+<IDs> => IDENTIFIER <IDs>' 
+
+token: IDENTIFIER ,      lexeme: step$
+
+token: SEPARATOR ,      lexeme: ;
+<IDs>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: ;
+
+token: KEYWORD ,      lexeme: get
+<Declaration List>' => <Empty> 
+
+token: KEYWORD ,      lexeme: get
+<Statement List> => <Statement> <Statement List>' 
+
+token: KEYWORD ,      lexeme: get
+<Statement> => <Scan> 
+
+token: KEYWORD ,      lexeme: get
+<Scan> => get ( <IDs> ) ; 
+
+token: KEYWORD ,      lexeme: get
+
+token: SEPARATOR ,      lexeme: (
+
+token: IDENTIFIER ,      lexeme: low
+<IDs> => IDENTIFIER <IDs>' 
+
+token: IDENTIFIER ,      lexeme: low
+
+token: SEPARATOR ,      lexeme: ,
+<IDs>' => , <IDs> 
+
+token: SEPARATOR ,      lexeme: ,
+
+token: IDENTIFIER ,      lexeme: high
+<IDs> => IDENTIFIER <IDs>' 
+
+token: IDENTIFIER ,      lexeme: high
+
+token: SEPARATOR ,      lexeme: ,
+<IDs>' => , <IDs> 
+
+token: SEPARATOR ,      lexeme: ,
+
+token: IDENTIFIER ,      lexeme: step$
+<IDs> => IDENTIFIER <IDs>' 
+
+token: IDENTIFIER ,      lexeme: step$
+
+token: SEPARATOR ,      lexeme: )
+<IDs>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+
+token: SEPARATOR ,      lexeme: ;
+
+token: KEYWORD ,      lexeme: while
+<Statement List>' => <Statement List> 
+
+token: KEYWORD ,      lexeme: while
+<Statement List> => <Statement> <Statement List>' 
+
+token: KEYWORD ,      lexeme: while
+<Statement> => <While> 
+
+token: KEYWORD ,      lexeme: while
+<While> => while ( <Condition> ) <Statement> 
+
+token: KEYWORD ,      lexeme: while
+
+token: SEPARATOR ,      lexeme: (
+
+token: IDENTIFIER ,      lexeme: low
+<Condition> => <Expression> <Relop> <Expression> 
+
+token: IDENTIFIER ,      lexeme: low
+<Expression> => <Term> <Expression>' 
+
+token: IDENTIFIER ,      lexeme: low
+<Term> => <Factor> <Term>' 
+
+token: IDENTIFIER ,      lexeme: low
+<Factor> => <Primary> 
+
+token: IDENTIFIER ,      lexeme: low
+<Primary> => IDENTIFIER <Primary>' 
+
+token: IDENTIFIER ,      lexeme: low
+
+token: OPERATOR ,      lexeme: <
+<Primary>' => <Empty> 
+
+token: OPERATOR ,      lexeme: <
+<Term>' => <Empty> 
+
+token: OPERATOR ,      lexeme: <
+<Expression>' => <Empty> 
+
+token: OPERATOR ,      lexeme: <
+<Relop> => < 
+
+token: OPERATOR ,      lexeme: <
+
+token: IDENTIFIER ,      lexeme: high
+<Expression> => <Term> <Expression>' 
+
+token: IDENTIFIER ,      lexeme: high
+<Term> => <Factor> <Term>' 
+
+token: IDENTIFIER ,      lexeme: high
+<Factor> => <Primary> 
+
+token: IDENTIFIER ,      lexeme: high
+<Primary> => IDENTIFIER <Primary>' 
+
+token: IDENTIFIER ,      lexeme: high
+
+token: SEPARATOR ,      lexeme: )
+<Primary>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+<Term>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+<Expression>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+
+token: SEPARATOR ,      lexeme: {
+<Statement> => <Compound> 
+
+token: SEPARATOR ,      lexeme: {
+<Compound> => { <Statement List> } 
+
+token: SEPARATOR ,      lexeme: {
+
+token: KEYWORD ,      lexeme: put
+<Statement List> => <Statement> <Statement List>' 
+
+token: KEYWORD ,      lexeme: put
+<Statement> => <Print> 
+
+token: KEYWORD ,      lexeme: put
+<Print> => put ( <Expression> ) ; 
+
+token: KEYWORD ,      lexeme: put
+
+token: SEPARATOR ,      lexeme: (
+
+token: IDENTIFIER ,      lexeme: low
+<Expression> => <Term> <Expression>' 
+
+token: IDENTIFIER ,      lexeme: low
+<Term> => <Factor> <Term>' 
+
+token: IDENTIFIER ,      lexeme: low
+<Factor> => <Primary> 
+
+token: IDENTIFIER ,      lexeme: low
+<Primary> => IDENTIFIER <Primary>' 
+
+token: IDENTIFIER ,      lexeme: low
+
+token: SEPARATOR ,      lexeme: )
+<Primary>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+<Term>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+<Expression>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+
+token: SEPARATOR ,      lexeme: ;
+
+token: KEYWORD ,      lexeme: put
+<Statement List>' => <Statement List> 
+
+token: KEYWORD ,      lexeme: put
+<Statement List> => <Statement> <Statement List>' 
+
+token: KEYWORD ,      lexeme: put
+<Statement> => <Print> 
+
+token: KEYWORD ,      lexeme: put
+<Print> => put ( <Expression> ) ; 
+
+token: KEYWORD ,      lexeme: put
+
+token: SEPARATOR ,      lexeme: (
+
+token: IDENTIFIER ,      lexeme: convert$
+<Expression> => <Term> <Expression>' 
+
+token: IDENTIFIER ,      lexeme: convert$
+<Term> => <Factor> <Term>' 
+
+token: IDENTIFIER ,      lexeme: convert$
+<Factor> => <Primary> 
+
+token: IDENTIFIER ,      lexeme: convert$
+<Primary> => IDENTIFIER <Primary>' 
+
+token: IDENTIFIER ,      lexeme: convert$
+
+token: SEPARATOR ,      lexeme: (
+<Primary>' => ( <IDs> ) 
+
+token: SEPARATOR ,      lexeme: (
+
+token: IDENTIFIER ,      lexeme: low
+<IDs> => IDENTIFIER <IDs>' 
+
+token: IDENTIFIER ,      lexeme: low
+
+token: SEPARATOR ,      lexeme: )
+<IDs>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+
+token: SEPARATOR ,      lexeme: )
+<Term>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+<Expression>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: )
+
+token: SEPARATOR ,      lexeme: ;
+
+token: IDENTIFIER ,      lexeme: low
+<Statement List>' => <Statement List> 
+
+token: IDENTIFIER ,      lexeme: low
+<Statement List> => <Statement> <Statement List>' 
+
+token: IDENTIFIER ,      lexeme: low
+<Statement> => <Assign> 
+
+token: IDENTIFIER ,      lexeme: low
+<Assign> => IDENTIFIER = <Expression> ; 
+
+token: IDENTIFIER ,      lexeme: low
+
+token: OPERATOR ,      lexeme: =
+
+token: IDENTIFIER ,      lexeme: low
+<Expression> => <Term> <Expression>' 
+
+token: IDENTIFIER ,      lexeme: low
+<Term> => <Factor> <Term>' 
+
+token: IDENTIFIER ,      lexeme: low
+<Factor> => <Primary> 
+
+token: IDENTIFIER ,      lexeme: low
+<Primary> => IDENTIFIER <Primary>' 
+
+token: IDENTIFIER ,      lexeme: low
+
+token: OPERATOR ,      lexeme: +
+<Primary>' => <Empty> 
+
+token: OPERATOR ,      lexeme: +
+<Term>' => <Empty> 
+
+token: OPERATOR ,      lexeme: +
+<Expression>' => + <Term> <Expression>' 
+
+token: OPERATOR ,      lexeme: +
+
+token: IDENTIFIER ,      lexeme: step$
+<Term> => <Factor> <Term>' 
+
+token: IDENTIFIER ,      lexeme: step$
+<Factor> => <Primary> 
+
+token: IDENTIFIER ,      lexeme: step$
+<Primary> => IDENTIFIER <Primary>' 
+
+token: IDENTIFIER ,      lexeme: step$
+
+token: SEPARATOR ,      lexeme: ;
+<Primary>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: ;
+<Term>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: ;
+<Expression>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: ;
+
+token: SEPARATOR ,      lexeme: }
+<Statement List>' => <Empty> 
+
+token: SEPARATOR ,      lexeme: }
+
+token: END_INPUT ,      lexeme: $
+<Statement List>' => <Empty> 
+
+token: END_INPUT ,      lexeme: $
+
+successfully parsed input. input is valid.

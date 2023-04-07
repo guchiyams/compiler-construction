@@ -10,7 +10,9 @@ Team :
 #include <iostream>
 #include <fstream>
 
-#include "Lexer.cpp"
+// #include "./Lexer/Lexer.cpp"
+#include "./Parser/Parser.cpp"
+#include "./Parser/ParserTable/ParserTable.cpp"
 
 using std::cout;
 
@@ -45,8 +47,18 @@ int main(int argc, char* argv[])
         abort();
     }
 
-    Lexer lexical_analyzer(input_file_name, output_file_name);
-    lexical_analyzer.print_tokens();
+    PredictiveParser parser(input_file_name);
+    parser.parse_to_outfile(output_file_name);
+
+    // Token token = parser.get_lexer().get_next_token();
+    // token.print_token();
+
+    // cout << std::endl;
+
+    // parser.get_lexer().print_tokens();
+
+    // Lexer lexical_analyzer(input_file_name, output_file_name);
+    // lexical_analyzer.print_tokens();
 
     // cout << std::endl;
     // cout << std::endl;
@@ -62,6 +74,14 @@ int main(int argc, char* argv[])
     // cout << std::endl;
 
     // lexical_analyzer.print_tokens();
+
+    /*
+        // initialize PredictiveParser
+        PredictiveParser parser(input_file, output_file);
+        parser.parse_to_output_file();
+    */
+
+
 
     return 0;
 };

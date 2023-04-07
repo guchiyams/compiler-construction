@@ -1,20 +1,13 @@
-for (int i = 0; i < 3; i++) {
-    x += 2; 
+function convert$ [fahr:int]
+{
+    return 5 * (fahr -32) / 9;
 }
+%%
+int    low,  high, step$;      ! declarations !
 
-int x = .6;
-int y = 9.9;
-
-while (x > y) {
-    if (x == 100000) {
-        x--;
-    } else if (x == 25.939) {
-        x++;
-    }
-
-    return x;
-}
-
-int thisfunction() {
-    return x;
-}
+get (low, high, step$);
+while (low  <  high )  
+    {  put (low);
+        put (convert$ (low));
+        low =  low  +  step$;
+    } 
