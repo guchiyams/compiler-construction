@@ -58,10 +58,10 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
                 out_file << "epsilon found -> popping \"" << top_of_stack << "\" from stack\n" << std::endl;
                 _parser_stack.pop();
                 continue;
-            } else {
-                // print current token retrieved from lexer
-                token.print_token_to_outfile(out_file);
             }
+            
+            // print current token retrieved from lexer
+            token.print_token_to_outfile(out_file);
 
             // if top_of_stack is a terminal
             if ( TERMINAL_SET.find(top_of_stack) != TERMINAL_SET.end() ) {
