@@ -1,0 +1,844 @@
+parsing file: input_02.txt...
+
+transition number: [ 0 ]
+current stack: <Rat23S> $ 
+current token: SEPARATOR ,      lexeme: %
+production used: <Rat23S> => <Opt Function Definitions> % % <Opt Declaration List> <Statement List> 
+
+transition number: [ 1 ]
+current stack: <Opt Function Definitions> % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: %
+production used: <Opt Function Definitions> => <Empty> 
+
+transition number: [ 2 ]
+current stack: <Empty> % % <Opt Declaration List> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 3 ]
+current stack: % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: %
+terminal matched: "%" = "%" -> popping "%" from stack
+
+transition number: [ 4 ]
+current stack: % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: %
+terminal matched: "%" = "%" -> popping "%" from stack
+
+transition number: [ 5 ]
+current stack: <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: int
+production used: <Opt Declaration List> => <Declaration List> 
+
+transition number: [ 6 ]
+current stack: <Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: int
+production used: <Declaration List> => <Declaration> ; <Declaration List>' 
+
+transition number: [ 7 ]
+current stack: <Declaration> ; <Declaration List>' <Statement List> $ 
+current token: KEYWORD ,      lexeme: int
+production used: <Declaration> => <Qualifier> <IDs> 
+
+transition number: [ 8 ]
+current stack: <Qualifier> <IDs> ; <Declaration List>' <Statement List> $ 
+current token: KEYWORD ,      lexeme: int
+production used: <Qualifier> => int 
+
+transition number: [ 9 ]
+current stack: int <IDs> ; <Declaration List>' <Statement List> $ 
+current token: KEYWORD ,      lexeme: int
+terminal matched: "int" = "int" -> popping "int" from stack
+
+transition number: [ 10 ]
+current stack: <IDs> ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <IDs> => IDENTIFIER <IDs>' 
+
+transition number: [ 11 ]
+current stack: IDENTIFIER <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: low
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 12 ]
+current stack: <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ,
+production used: <IDs>' => , <IDs> 
+
+transition number: [ 13 ]
+current stack: , <IDs> ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ,
+terminal matched: "," = "," -> popping "," from stack
+
+transition number: [ 14 ]
+current stack: <IDs> ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: high
+production used: <IDs> => IDENTIFIER <IDs>' 
+
+transition number: [ 15 ]
+current stack: IDENTIFIER <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: high
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 16 ]
+current stack: <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ,
+production used: <IDs>' => , <IDs> 
+
+transition number: [ 17 ]
+current stack: , <IDs> ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ,
+terminal matched: "," = "," -> popping "," from stack
+
+transition number: [ 18 ]
+current stack: <IDs> ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: step$
+production used: <IDs> => IDENTIFIER <IDs>' 
+
+transition number: [ 19 ]
+current stack: IDENTIFIER <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: step$
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 20 ]
+current stack: <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ;
+production used: <IDs>' => <Empty> 
+
+transition number: [ 21 ]
+current stack: <Empty> ; <Declaration List>' <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 22 ]
+current stack: ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ;
+terminal matched: ";" = ";" -> popping ";" from stack
+
+transition number: [ 23 ]
+current stack: <Declaration List>' <Statement List> $ 
+current token: KEYWORD ,      lexeme: real
+production used: <Declaration List>' => <Declaration List> 
+
+transition number: [ 24 ]
+current stack: <Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: real
+production used: <Declaration List> => <Declaration> ; <Declaration List>' 
+
+transition number: [ 25 ]
+current stack: <Declaration> ; <Declaration List>' <Statement List> $ 
+current token: KEYWORD ,      lexeme: real
+production used: <Declaration> => <Qualifier> <IDs> 
+
+transition number: [ 26 ]
+current stack: <Qualifier> <IDs> ; <Declaration List>' <Statement List> $ 
+current token: KEYWORD ,      lexeme: real
+production used: <Qualifier> => real 
+
+transition number: [ 27 ]
+current stack: real <IDs> ; <Declaration List>' <Statement List> $ 
+current token: KEYWORD ,      lexeme: real
+terminal matched: "real" = "real" -> popping "real" from stack
+
+transition number: [ 28 ]
+current stack: <IDs> ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: lower
+production used: <IDs> => IDENTIFIER <IDs>' 
+
+transition number: [ 29 ]
+current stack: IDENTIFIER <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: lower
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 30 ]
+current stack: <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ,
+production used: <IDs>' => , <IDs> 
+
+transition number: [ 31 ]
+current stack: , <IDs> ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ,
+terminal matched: "," = "," -> popping "," from stack
+
+transition number: [ 32 ]
+current stack: <IDs> ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: higher
+production used: <IDs> => IDENTIFIER <IDs>' 
+
+transition number: [ 33 ]
+current stack: IDENTIFIER <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: higher
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 34 ]
+current stack: <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ,
+production used: <IDs>' => , <IDs> 
+
+transition number: [ 35 ]
+current stack: , <IDs> ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ,
+terminal matched: "," = "," -> popping "," from stack
+
+transition number: [ 36 ]
+current stack: <IDs> ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: steps$
+production used: <IDs> => IDENTIFIER <IDs>' 
+
+transition number: [ 37 ]
+current stack: IDENTIFIER <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: steps$
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 38 ]
+current stack: <IDs>' ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ;
+production used: <IDs>' => <Empty> 
+
+transition number: [ 39 ]
+current stack: <Empty> ; <Declaration List>' <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 40 ]
+current stack: ; <Declaration List>' <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ;
+terminal matched: ";" = ";" -> popping ";" from stack
+
+transition number: [ 41 ]
+current stack: <Declaration List>' <Statement List> $ 
+current token: KEYWORD ,      lexeme: get
+production used: <Declaration List>' => <Empty> 
+
+transition number: [ 42 ]
+current stack: <Empty> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 43 ]
+current stack: <Statement List> $ 
+current token: KEYWORD ,      lexeme: get
+production used: <Statement List> => <Statement> <Statement List>' 
+
+transition number: [ 44 ]
+current stack: <Statement> <Statement List>' $ 
+current token: KEYWORD ,      lexeme: get
+production used: <Statement> => <Scan> 
+
+transition number: [ 45 ]
+current stack: <Scan> <Statement List>' $ 
+current token: KEYWORD ,      lexeme: get
+production used: <Scan> => get ( <IDs> ) ; 
+
+transition number: [ 46 ]
+current stack: get ( <IDs> ) ; <Statement List>' $ 
+current token: KEYWORD ,      lexeme: get
+terminal matched: "get" = "get" -> popping "get" from stack
+
+transition number: [ 47 ]
+current stack: ( <IDs> ) ; <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: (
+terminal matched: "(" = "(" -> popping "(" from stack
+
+transition number: [ 48 ]
+current stack: <IDs> ) ; <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <IDs> => IDENTIFIER <IDs>' 
+
+transition number: [ 49 ]
+current stack: IDENTIFIER <IDs>' ) ; <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 50 ]
+current stack: <IDs>' ) ; <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: ,
+production used: <IDs>' => , <IDs> 
+
+transition number: [ 51 ]
+current stack: , <IDs> ) ; <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: ,
+terminal matched: "," = "," -> popping "," from stack
+
+transition number: [ 52 ]
+current stack: <IDs> ) ; <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: high
+production used: <IDs> => IDENTIFIER <IDs>' 
+
+transition number: [ 53 ]
+current stack: IDENTIFIER <IDs>' ) ; <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: high
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 54 ]
+current stack: <IDs>' ) ; <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: ,
+production used: <IDs>' => , <IDs> 
+
+transition number: [ 55 ]
+current stack: , <IDs> ) ; <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: ,
+terminal matched: "," = "," -> popping "," from stack
+
+transition number: [ 56 ]
+current stack: <IDs> ) ; <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: step$
+production used: <IDs> => IDENTIFIER <IDs>' 
+
+transition number: [ 57 ]
+current stack: IDENTIFIER <IDs>' ) ; <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: step$
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 58 ]
+current stack: <IDs>' ) ; <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <IDs>' => <Empty> 
+
+transition number: [ 59 ]
+current stack: <Empty> ) ; <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 60 ]
+current stack: ) ; <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+terminal matched: ")" = ")" -> popping ")" from stack
+
+transition number: [ 61 ]
+current stack: ; <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: ;
+terminal matched: ";" = ";" -> popping ";" from stack
+
+transition number: [ 62 ]
+current stack: <Statement List>' $ 
+current token: KEYWORD ,      lexeme: while
+production used: <Statement List>' => <Statement List> 
+
+transition number: [ 63 ]
+current stack: <Statement List> $ 
+current token: KEYWORD ,      lexeme: while
+production used: <Statement List> => <Statement> <Statement List>' 
+
+transition number: [ 64 ]
+current stack: <Statement> <Statement List>' $ 
+current token: KEYWORD ,      lexeme: while
+production used: <Statement> => <While> 
+
+transition number: [ 65 ]
+current stack: <While> <Statement List>' $ 
+current token: KEYWORD ,      lexeme: while
+production used: <While> => while ( <Condition> ) <Statement> 
+
+transition number: [ 66 ]
+current stack: while ( <Condition> ) <Statement> <Statement List>' $ 
+current token: KEYWORD ,      lexeme: while
+terminal matched: "while" = "while" -> popping "while" from stack
+
+transition number: [ 67 ]
+current stack: ( <Condition> ) <Statement> <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: (
+terminal matched: "(" = "(" -> popping "(" from stack
+
+transition number: [ 68 ]
+current stack: <Condition> ) <Statement> <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Condition> => <Expression> <Relop> <Expression> 
+
+transition number: [ 69 ]
+current stack: <Expression> <Relop> <Expression> ) <Statement> <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Expression> => <Term> <Expression>' 
+
+transition number: [ 70 ]
+current stack: <Term> <Expression>' <Relop> <Expression> ) <Statement> <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Term> => <Factor> <Term>' 
+
+transition number: [ 71 ]
+current stack: <Factor> <Term>' <Expression>' <Relop> <Expression> ) <Statement> <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Factor> => <Primary> 
+
+transition number: [ 72 ]
+current stack: <Primary> <Term>' <Expression>' <Relop> <Expression> ) <Statement> <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Primary> => IDENTIFIER <Primary>' 
+
+transition number: [ 73 ]
+current stack: IDENTIFIER <Primary>' <Term>' <Expression>' <Relop> <Expression> ) <Statement> <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 74 ]
+current stack: <Primary>' <Term>' <Expression>' <Relop> <Expression> ) <Statement> <Statement List>' $ 
+current token: OPERATOR ,      lexeme: <
+production used: <Primary>' => <Empty> 
+
+transition number: [ 75 ]
+current stack: <Empty> <Term>' <Expression>' <Relop> <Expression> ) <Statement> <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 76 ]
+current stack: <Term>' <Expression>' <Relop> <Expression> ) <Statement> <Statement List>' $ 
+current token: OPERATOR ,      lexeme: <
+production used: <Term>' => <Empty> 
+
+transition number: [ 77 ]
+current stack: <Empty> <Expression>' <Relop> <Expression> ) <Statement> <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 78 ]
+current stack: <Expression>' <Relop> <Expression> ) <Statement> <Statement List>' $ 
+current token: OPERATOR ,      lexeme: <
+production used: <Expression>' => <Empty> 
+
+transition number: [ 79 ]
+current stack: <Empty> <Relop> <Expression> ) <Statement> <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 80 ]
+current stack: <Relop> <Expression> ) <Statement> <Statement List>' $ 
+current token: OPERATOR ,      lexeme: <
+production used: <Relop> => < 
+
+transition number: [ 81 ]
+current stack: < <Expression> ) <Statement> <Statement List>' $ 
+current token: OPERATOR ,      lexeme: <
+terminal matched: "<" = "<" -> popping "<" from stack
+
+transition number: [ 82 ]
+current stack: <Expression> ) <Statement> <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: high
+production used: <Expression> => <Term> <Expression>' 
+
+transition number: [ 83 ]
+current stack: <Term> <Expression>' ) <Statement> <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: high
+production used: <Term> => <Factor> <Term>' 
+
+transition number: [ 84 ]
+current stack: <Factor> <Term>' <Expression>' ) <Statement> <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: high
+production used: <Factor> => <Primary> 
+
+transition number: [ 85 ]
+current stack: <Primary> <Term>' <Expression>' ) <Statement> <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: high
+production used: <Primary> => IDENTIFIER <Primary>' 
+
+transition number: [ 86 ]
+current stack: IDENTIFIER <Primary>' <Term>' <Expression>' ) <Statement> <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: high
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 87 ]
+current stack: <Primary>' <Term>' <Expression>' ) <Statement> <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <Primary>' => <Empty> 
+
+transition number: [ 88 ]
+current stack: <Empty> <Term>' <Expression>' ) <Statement> <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 89 ]
+current stack: <Term>' <Expression>' ) <Statement> <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <Term>' => <Empty> 
+
+transition number: [ 90 ]
+current stack: <Empty> <Expression>' ) <Statement> <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 91 ]
+current stack: <Expression>' ) <Statement> <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <Expression>' => <Empty> 
+
+transition number: [ 92 ]
+current stack: <Empty> ) <Statement> <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 93 ]
+current stack: ) <Statement> <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+terminal matched: ")" = ")" -> popping ")" from stack
+
+transition number: [ 94 ]
+current stack: <Statement> <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: {
+production used: <Statement> => <Compound> 
+
+transition number: [ 95 ]
+current stack: <Compound> <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: {
+production used: <Compound> => { <Statement List> } 
+
+transition number: [ 96 ]
+current stack: { <Statement List> } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: {
+terminal matched: "{" = "{" -> popping "{" from stack
+
+transition number: [ 97 ]
+current stack: <Statement List> } <Statement List>' $ 
+current token: KEYWORD ,      lexeme: put
+production used: <Statement List> => <Statement> <Statement List>' 
+
+transition number: [ 98 ]
+current stack: <Statement> <Statement List>' } <Statement List>' $ 
+current token: KEYWORD ,      lexeme: put
+production used: <Statement> => <Print> 
+
+transition number: [ 99 ]
+current stack: <Print> <Statement List>' } <Statement List>' $ 
+current token: KEYWORD ,      lexeme: put
+production used: <Print> => put ( <Expression> ) ; 
+
+transition number: [ 100 ]
+current stack: put ( <Expression> ) ; <Statement List>' } <Statement List>' $ 
+current token: KEYWORD ,      lexeme: put
+terminal matched: "put" = "put" -> popping "put" from stack
+
+transition number: [ 101 ]
+current stack: ( <Expression> ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: (
+terminal matched: "(" = "(" -> popping "(" from stack
+
+transition number: [ 102 ]
+current stack: <Expression> ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Expression> => <Term> <Expression>' 
+
+transition number: [ 103 ]
+current stack: <Term> <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Term> => <Factor> <Term>' 
+
+transition number: [ 104 ]
+current stack: <Factor> <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Factor> => <Primary> 
+
+transition number: [ 105 ]
+current stack: <Primary> <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Primary> => IDENTIFIER <Primary>' 
+
+transition number: [ 106 ]
+current stack: IDENTIFIER <Primary>' <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 107 ]
+current stack: <Primary>' <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <Primary>' => <Empty> 
+
+transition number: [ 108 ]
+current stack: <Empty> <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 109 ]
+current stack: <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <Term>' => <Empty> 
+
+transition number: [ 110 ]
+current stack: <Empty> <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 111 ]
+current stack: <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <Expression>' => <Empty> 
+
+transition number: [ 112 ]
+current stack: <Empty> ) ; <Statement List>' } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 113 ]
+current stack: ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+terminal matched: ")" = ")" -> popping ")" from stack
+
+transition number: [ 114 ]
+current stack: ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: ;
+terminal matched: ";" = ";" -> popping ";" from stack
+
+transition number: [ 115 ]
+current stack: <Statement List>' } <Statement List>' $ 
+current token: KEYWORD ,      lexeme: put
+production used: <Statement List>' => <Statement List> 
+
+transition number: [ 116 ]
+current stack: <Statement List> } <Statement List>' $ 
+current token: KEYWORD ,      lexeme: put
+production used: <Statement List> => <Statement> <Statement List>' 
+
+transition number: [ 117 ]
+current stack: <Statement> <Statement List>' } <Statement List>' $ 
+current token: KEYWORD ,      lexeme: put
+production used: <Statement> => <Print> 
+
+transition number: [ 118 ]
+current stack: <Print> <Statement List>' } <Statement List>' $ 
+current token: KEYWORD ,      lexeme: put
+production used: <Print> => put ( <Expression> ) ; 
+
+transition number: [ 119 ]
+current stack: put ( <Expression> ) ; <Statement List>' } <Statement List>' $ 
+current token: KEYWORD ,      lexeme: put
+terminal matched: "put" = "put" -> popping "put" from stack
+
+transition number: [ 120 ]
+current stack: ( <Expression> ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: (
+terminal matched: "(" = "(" -> popping "(" from stack
+
+transition number: [ 121 ]
+current stack: <Expression> ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: convert$
+production used: <Expression> => <Term> <Expression>' 
+
+transition number: [ 122 ]
+current stack: <Term> <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: convert$
+production used: <Term> => <Factor> <Term>' 
+
+transition number: [ 123 ]
+current stack: <Factor> <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: convert$
+production used: <Factor> => <Primary> 
+
+transition number: [ 124 ]
+current stack: <Primary> <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: convert$
+production used: <Primary> => IDENTIFIER <Primary>' 
+
+transition number: [ 125 ]
+current stack: IDENTIFIER <Primary>' <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: convert$
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 126 ]
+current stack: <Primary>' <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: (
+production used: <Primary>' => ( <IDs> ) 
+
+transition number: [ 127 ]
+current stack: ( <IDs> ) <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: (
+terminal matched: "(" = "(" -> popping "(" from stack
+
+transition number: [ 128 ]
+current stack: <IDs> ) <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <IDs> => IDENTIFIER <IDs>' 
+
+transition number: [ 129 ]
+current stack: IDENTIFIER <IDs>' ) <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 130 ]
+current stack: <IDs>' ) <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <IDs>' => <Empty> 
+
+transition number: [ 131 ]
+current stack: <Empty> ) <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 132 ]
+current stack: ) <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+terminal matched: ")" = ")" -> popping ")" from stack
+
+transition number: [ 133 ]
+current stack: <Term>' <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <Term>' => <Empty> 
+
+transition number: [ 134 ]
+current stack: <Empty> <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 135 ]
+current stack: <Expression>' ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <Expression>' => <Empty> 
+
+transition number: [ 136 ]
+current stack: <Empty> ) ; <Statement List>' } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 137 ]
+current stack: ) ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: )
+terminal matched: ")" = ")" -> popping ")" from stack
+
+transition number: [ 138 ]
+current stack: ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: ;
+terminal matched: ";" = ";" -> popping ";" from stack
+
+transition number: [ 139 ]
+current stack: <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Statement List>' => <Statement List> 
+
+transition number: [ 140 ]
+current stack: <Statement List> } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Statement List> => <Statement> <Statement List>' 
+
+transition number: [ 141 ]
+current stack: <Statement> <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Statement> => <Assign> 
+
+transition number: [ 142 ]
+current stack: <Assign> <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Assign> => IDENTIFIER = <Expression> ; 
+
+transition number: [ 143 ]
+current stack: IDENTIFIER = <Expression> ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 144 ]
+current stack: = <Expression> ; <Statement List>' } <Statement List>' $ 
+current token: OPERATOR ,      lexeme: =
+terminal matched: "=" = "=" -> popping "=" from stack
+
+transition number: [ 145 ]
+current stack: <Expression> ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Expression> => <Term> <Expression>' 
+
+transition number: [ 146 ]
+current stack: <Term> <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Term> => <Factor> <Term>' 
+
+transition number: [ 147 ]
+current stack: <Factor> <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Factor> => <Primary> 
+
+transition number: [ 148 ]
+current stack: <Primary> <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+production used: <Primary> => IDENTIFIER <Primary>' 
+
+transition number: [ 149 ]
+current stack: IDENTIFIER <Primary>' <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: low
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 150 ]
+current stack: <Primary>' <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: OPERATOR ,      lexeme: +
+production used: <Primary>' => <Empty> 
+
+transition number: [ 151 ]
+current stack: <Empty> <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 152 ]
+current stack: <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: OPERATOR ,      lexeme: +
+production used: <Term>' => <Empty> 
+
+transition number: [ 153 ]
+current stack: <Empty> <Expression>' ; <Statement List>' } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 154 ]
+current stack: <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: OPERATOR ,      lexeme: +
+production used: <Expression>' => + <Term> <Expression>' 
+
+transition number: [ 155 ]
+current stack: + <Term> <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: OPERATOR ,      lexeme: +
+terminal matched: "+" = "+" -> popping "+" from stack
+
+transition number: [ 156 ]
+current stack: <Term> <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: step$
+production used: <Term> => <Factor> <Term>' 
+
+transition number: [ 157 ]
+current stack: <Factor> <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: step$
+production used: <Factor> => <Primary> 
+
+transition number: [ 158 ]
+current stack: <Primary> <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: step$
+production used: <Primary> => IDENTIFIER <Primary>' 
+
+transition number: [ 159 ]
+current stack: IDENTIFIER <Primary>' <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: IDENTIFIER ,      lexeme: step$
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 160 ]
+current stack: <Primary>' <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: ;
+production used: <Primary>' => <Empty> 
+
+transition number: [ 161 ]
+current stack: <Empty> <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 162 ]
+current stack: <Term>' <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: ;
+production used: <Term>' => <Empty> 
+
+transition number: [ 163 ]
+current stack: <Empty> <Expression>' ; <Statement List>' } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 164 ]
+current stack: <Expression>' ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: ;
+production used: <Expression>' => <Empty> 
+
+transition number: [ 165 ]
+current stack: <Empty> ; <Statement List>' } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 166 ]
+current stack: ; <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: ;
+terminal matched: ";" = ";" -> popping ";" from stack
+
+transition number: [ 167 ]
+current stack: <Statement List>' } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: }
+production used: <Statement List>' => <Empty> 
+
+transition number: [ 168 ]
+current stack: <Empty> } <Statement List>' $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 169 ]
+current stack: } <Statement List>' $ 
+current token: SEPARATOR ,      lexeme: }
+terminal matched: "}" = "}" -> popping "}" from stack
+
+transition number: [ 170 ]
+current stack: <Statement List>' $ 
+current token: END_INPUT ,      lexeme: $
+production used: <Statement List>' => <Empty> 
+
+transition number: [ 171 ]
+current stack: <Empty> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 172 ]
+current stack: $ 
+current token: END_INPUT ,      lexeme: $
+terminal matched: "$" = "$" -> popping "$" from stack
+
+successfully parsed input. input is valid.

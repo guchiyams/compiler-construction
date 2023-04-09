@@ -1,0 +1,357 @@
+parsing file: input_01.txt...
+
+transition number: [ 0 ]
+current stack: <Rat23S> $ 
+current token: KEYWORD ,      lexeme: function
+production used: <Rat23S> => <Opt Function Definitions> % % <Opt Declaration List> <Statement List> 
+
+transition number: [ 1 ]
+current stack: <Opt Function Definitions> % % <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: function
+production used: <Opt Function Definitions> => <Function Definitions> 
+
+transition number: [ 2 ]
+current stack: <Function Definitions> % % <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: function
+production used: <Function Definitions> => <Function> <Function Definitions>' 
+
+transition number: [ 3 ]
+current stack: <Function> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: function
+production used: <Function> => function IDENTIFIER [ <Opt Parameter List> ] <Opt Declaration List> <Body> 
+
+transition number: [ 4 ]
+current stack: function IDENTIFIER [ <Opt Parameter List> ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: function
+terminal matched: "function" = "function" -> popping "function" from stack
+
+transition number: [ 5 ]
+current stack: IDENTIFIER [ <Opt Parameter List> ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: convert$
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 6 ]
+current stack: [ <Opt Parameter List> ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: [
+terminal matched: "[" = "[" -> popping "[" from stack
+
+transition number: [ 7 ]
+current stack: <Opt Parameter List> ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: fahr
+production used: <Opt Parameter List> => <Parameter List> 
+
+transition number: [ 8 ]
+current stack: <Parameter List> ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: fahr
+production used: <Parameter List> => <Parameter> <Parameter List>' 
+
+transition number: [ 9 ]
+current stack: <Parameter> <Parameter List>' ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: fahr
+production used: <Parameter> => <IDs> : <Qualifier> 
+
+transition number: [ 10 ]
+current stack: <IDs> : <Qualifier> <Parameter List>' ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: fahr
+production used: <IDs> => IDENTIFIER <IDs>' 
+
+transition number: [ 11 ]
+current stack: IDENTIFIER <IDs>' : <Qualifier> <Parameter List>' ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: fahr
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 12 ]
+current stack: <IDs>' : <Qualifier> <Parameter List>' ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: :
+production used: <IDs>' => <Empty> 
+
+transition number: [ 13 ]
+current stack: <Empty> : <Qualifier> <Parameter List>' ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 14 ]
+current stack: : <Qualifier> <Parameter List>' ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: :
+terminal matched: ":" = ":" -> popping ":" from stack
+
+transition number: [ 15 ]
+current stack: <Qualifier> <Parameter List>' ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: int
+production used: <Qualifier> => int 
+
+transition number: [ 16 ]
+current stack: int <Parameter List>' ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: int
+terminal matched: "int" = "int" -> popping "int" from stack
+
+transition number: [ 17 ]
+current stack: <Parameter List>' ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ]
+production used: <Parameter List>' => <Empty> 
+
+transition number: [ 18 ]
+current stack: <Empty> ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 19 ]
+current stack: ] <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ]
+terminal matched: "]" = "]" -> popping "]" from stack
+
+transition number: [ 20 ]
+current stack: <Opt Declaration List> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: {
+production used: <Opt Declaration List> => <Empty> 
+
+transition number: [ 21 ]
+current stack: <Empty> <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 22 ]
+current stack: <Body> <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: {
+production used: <Body> => { <Statement List> } 
+
+transition number: [ 23 ]
+current stack: { <Statement List> } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: {
+terminal matched: "{" = "{" -> popping "{" from stack
+
+transition number: [ 24 ]
+current stack: <Statement List> } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: return
+production used: <Statement List> => <Statement> <Statement List>' 
+
+transition number: [ 25 ]
+current stack: <Statement> <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: return
+production used: <Statement> => <Return> 
+
+transition number: [ 26 ]
+current stack: <Return> <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: return
+production used: <Return> => return <Return>' 
+
+transition number: [ 27 ]
+current stack: return <Return>' <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: return
+terminal matched: "return" = "return" -> popping "return" from stack
+
+transition number: [ 28 ]
+current stack: <Return>' <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 5
+production used: <Return>' => <Expression> ; 
+
+transition number: [ 29 ]
+current stack: <Expression> ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 5
+production used: <Expression> => <Term> <Expression>' 
+
+transition number: [ 30 ]
+current stack: <Term> <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 5
+production used: <Term> => <Factor> <Term>' 
+
+transition number: [ 31 ]
+current stack: <Factor> <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 5
+production used: <Factor> => <Primary> 
+
+transition number: [ 32 ]
+current stack: <Primary> <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 5
+production used: <Primary> => INTEGER 
+
+transition number: [ 33 ]
+current stack: INTEGER <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 5
+terminal matched: "INTEGER" = "INTEGER" -> popping "INTEGER" from stack
+
+transition number: [ 34 ]
+current stack: <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: OPERATOR ,      lexeme: *
+production used: <Term>' => * <Factor> <Term>' 
+
+transition number: [ 35 ]
+current stack: * <Factor> <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: OPERATOR ,      lexeme: *
+terminal matched: "*" = "*" -> popping "*" from stack
+
+transition number: [ 36 ]
+current stack: <Factor> <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: (
+production used: <Factor> => <Primary> 
+
+transition number: [ 37 ]
+current stack: <Primary> <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: (
+production used: <Primary> => ( <Expression> ) 
+
+transition number: [ 38 ]
+current stack: ( <Expression> ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: (
+terminal matched: "(" = "(" -> popping "(" from stack
+
+transition number: [ 39 ]
+current stack: <Expression> ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: fahr
+production used: <Expression> => <Term> <Expression>' 
+
+transition number: [ 40 ]
+current stack: <Term> <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: fahr
+production used: <Term> => <Factor> <Term>' 
+
+transition number: [ 41 ]
+current stack: <Factor> <Term>' <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: fahr
+production used: <Factor> => <Primary> 
+
+transition number: [ 42 ]
+current stack: <Primary> <Term>' <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: fahr
+production used: <Primary> => IDENTIFIER <Primary>' 
+
+transition number: [ 43 ]
+current stack: IDENTIFIER <Primary>' <Term>' <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: IDENTIFIER ,      lexeme: fahr
+terminal matched: "IDENTIFIER" = "IDENTIFIER" -> popping "IDENTIFIER" from stack
+
+transition number: [ 44 ]
+current stack: <Primary>' <Term>' <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: OPERATOR ,      lexeme: -
+production used: <Primary>' => <Empty> 
+
+transition number: [ 45 ]
+current stack: <Empty> <Term>' <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 46 ]
+current stack: <Term>' <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: OPERATOR ,      lexeme: -
+production used: <Term>' => <Empty> 
+
+transition number: [ 47 ]
+current stack: <Empty> <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 48 ]
+current stack: <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: OPERATOR ,      lexeme: -
+production used: <Expression>' => - <Term> <Expression>' 
+
+transition number: [ 49 ]
+current stack: - <Term> <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: OPERATOR ,      lexeme: -
+terminal matched: "-" = "-" -> popping "-" from stack
+
+transition number: [ 50 ]
+current stack: <Term> <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 32
+production used: <Term> => <Factor> <Term>' 
+
+transition number: [ 51 ]
+current stack: <Factor> <Term>' <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 32
+production used: <Factor> => <Primary> 
+
+transition number: [ 52 ]
+current stack: <Primary> <Term>' <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 32
+production used: <Primary> => INTEGER 
+
+transition number: [ 53 ]
+current stack: INTEGER <Term>' <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 32
+terminal matched: "INTEGER" = "INTEGER" -> popping "INTEGER" from stack
+
+transition number: [ 54 ]
+current stack: <Term>' <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <Term>' => <Empty> 
+
+transition number: [ 55 ]
+current stack: <Empty> <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 56 ]
+current stack: <Expression>' ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: )
+production used: <Expression>' => <Empty> 
+
+transition number: [ 57 ]
+current stack: <Empty> ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 58 ]
+current stack: ) <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: )
+terminal matched: ")" = ")" -> popping ")" from stack
+
+transition number: [ 59 ]
+current stack: <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: OPERATOR ,      lexeme: /
+production used: <Term>' => / <Factor> <Term>' 
+
+transition number: [ 60 ]
+current stack: / <Factor> <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: OPERATOR ,      lexeme: /
+terminal matched: "/" = "/" -> popping "/" from stack
+
+transition number: [ 61 ]
+current stack: <Factor> <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 9
+production used: <Factor> => <Primary> 
+
+transition number: [ 62 ]
+current stack: <Primary> <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 9
+production used: <Primary> => INTEGER 
+
+transition number: [ 63 ]
+current stack: INTEGER <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: INTEGER ,      lexeme: 9
+terminal matched: "INTEGER" = "INTEGER" -> popping "INTEGER" from stack
+
+transition number: [ 64 ]
+current stack: <Term>' <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ;
+production used: <Term>' => <Empty> 
+
+transition number: [ 65 ]
+current stack: <Empty> <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 66 ]
+current stack: <Expression>' ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ;
+production used: <Expression>' => <Empty> 
+
+transition number: [ 67 ]
+current stack: <Empty> ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 68 ]
+current stack: ; <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: ;
+terminal matched: ";" = ";" -> popping ";" from stack
+
+transition number: [ 69 ]
+current stack: <Statement List>' } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: }
+production used: <Statement List>' => <Empty> 
+
+transition number: [ 70 ]
+current stack: <Empty> } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+epsilon found -> popping "<Empty>" from stack
+
+transition number: [ 71 ]
+current stack: } <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: SEPARATOR ,      lexeme: }
+terminal matched: "}" = "}" -> popping "}" from stack
+
+transition number: [ 72 ]
+current stack: <Function Definitions>' % % <Opt Declaration List> <Statement List> $ 
+current token: KEYWORD ,      lexeme: int
+
+no production found in the form: "<Function Definitions>'" => "int" ...

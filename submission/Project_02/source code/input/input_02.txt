@@ -1,0 +1,12 @@
+! no function definition !
+
+%%
+int    low,  high, step$;
+real   lower, higher, steps$;
+
+get (low, high, step$);
+while (low  <  high )  
+    {  put (low);
+        put (convert$ (low));
+        low =  low  +  step$;
+    }
