@@ -1,35 +1,27 @@
-# Project Title
-
-CPSC 323 - Project 1 - Lexical Analyzer
+# Project 2 - Predictive Parser
 
 ## Description
 
-In this project we created a lexical analyzer that reads the source code of a program to break it down into a sequence of tokens or lexemes: identifiers, keywords, operators, literals, etc. It identifies the patterns of characters that represent specific language constructs.
-
-To identify these patters, the lexical analyzer uses a fininte state machine (FSM). The FSM's state transition function is represented as a two-dimensional array, where each column represents an input symbol, and each row as different states. It lists the current state of the machine, the input symbol being read, and the next state to which the machine transitions, given that input symbol.
+The main goal of this project is to construct a parser that can recognize the syntax of a given programming language based on the rules defined by the context-free grammar. This parser should be able to efficiently and accurately parse the input source code and produce an error-free parse tree. The project will require a thorough understanding of parsing algorithms, lexical analysis, syntax analysis, and compiler construction concepts. The successful completion of this project will demonstrate the ability to develop a reliable and efficient parser for a programming language, which is a crucial component of any compiler or interpreter.
 
 ## Getting Started
 
-### Dependencies
+### Dependencies & Environment
 
 * OS: Mac OS || Linux
+* Compiler: LLVM Clang
 
 ### Installing
 
-* Download repository [here](https://drive.google.com/drive/folders/1-hHyjDu8-U9jEtvkZXcql5gZyLFBQCNO?usp=share_link)
-* Change ```LexicalAnalyzer``` executable file permission
-```
-chmod +x LexicalAnalyzer
-```
+* Download repository [here](https://github.com/guchiyams/compiler-construction)
 
 ### Executing program
 
-* How to run the program
 * Open the command line of your OS
 * Change into downloaded repository directory
 * Execute the folliwng command:
 ```
-./LexicalAnalyzer <input_file>
+./run_parser.sh <input_file>
 ```
 * NOTE: the input_file can be one of the following:
     * input_01
@@ -41,9 +33,9 @@ chmod +x LexicalAnalyzer
 
 Your OS may reject your attempt to run the downloaded executable file. To fix this, try running the executable file as a super user:
 ```
-sudo ./LexicalAnalyzer <input_file>
+sudo ./run_parser.sh <input_file>
 ```
 
-## Authors
+## Author
 
 Yamato Eguchi
