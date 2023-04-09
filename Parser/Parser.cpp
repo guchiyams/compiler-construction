@@ -53,10 +53,8 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
             // if token type is IDENTIFIER, INTEGER, or REAL, generalize the lexeme to the token type name
             if (token_type == TokenType::IDENTIFIER || token_type == TokenType::INTEGER || token_type == TokenType::REAL) curr_token = token_type_str;
 
-            // print current transition number
+            // print transition details
             out_file << "transition number: [ " << transition_count << " ]" << std::endl;
-
-            // print current stack
             this->print_current_stack_to_outfile(out_file);
 
             // if nonterminal = <Empty>, pop it from the stack and skip

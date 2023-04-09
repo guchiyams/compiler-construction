@@ -4,3 +4,5 @@ function convert$ [fahr:int]
 }
 int    low,  high, step$;      ! declarations !
 %%
+
+! no body. should return an error !
