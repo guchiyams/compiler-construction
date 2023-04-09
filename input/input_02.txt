@@ -1,3 +1,5 @@
+! no function definition !
+
 %%
 int    low,  high, step$;      ! declarations !
 
@@ -6,4 +8,4 @@ while (low  <  high )
     {  put (low);
         put (convert$ (low));
         low =  low  +  step$;
-    } 
+    }

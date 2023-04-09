@@ -29,6 +29,9 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
     // open output file
     ofstream out_file("./output/" + output_file_name, std::ios::trunc);
 
+    // initialize transition count used for debugging
+    int transition_count = 0;
+
     // if output file successfully opened
     if (out_file.is_open()) {
         out_file << "parsing file: "<< this->input_file_name << "...\n" << std::endl;
@@ -49,14 +52,23 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
 
             // if token type is IDENTIFIER, INTEGER, or REAL, generalize the lexeme to the token type name
             if (token_type == TokenType::IDENTIFIER || token_type == TokenType::INTEGER || token_type == TokenType::REAL) curr_token = token_type_str;
-            
+
+            // print current transition number
+            out_file << "transition number: [ " << transition_count << " ]" << std::endl;
+
             // print current stack
             this->print_current_stack_to_outfile(out_file);
 
             // if nonterminal = <Empty>, pop it from the stack and skip
             if (top_of_stack == "<Empty>") {
+                // print transition detail
                 out_file << "epsilon found -> popping \"" << top_of_stack << "\" from stack\n" << std::endl;
+
+                // pop <Empty> nonterminal from top of stack
                 _parser_stack.pop();
+
+                // increment transition count
+                transition_count++;
                 continue;
             }
 
@@ -70,6 +82,7 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
                     out_file << "terminal matched: \""<< top_of_stack << "\" = \"" << curr_token << "\" -> popping \"" << top_of_stack << "\" from stack" << std::endl;
                     _parser_stack.pop();
                     _lexer.pop_front();
+                    transition_count++;
                 }
                 // else notify user of parsing error
                 else {
@@ -79,7 +92,7 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
                     // print verbose message about the error to terminal
                     cout << "PARSING ERROR. Invalid input string." << std::endl;
                     cout << "terminals do not match: \""<< top_of_stack << "\" != \"" << curr_token << "\"" << std::endl;
-                    cout << "Check ouput/" << output_file_name  << " for more details." << std::endl;
+                    cout << "Check ouput/" << output_file_name  << " - transition number: " << transition_count << " for more details." << std::endl;
 
                     // exit gracefully
                     exit(1);
@@ -100,6 +113,7 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
 
                     // push the rhs of production used to the stack
                     this->push_list_to_stack(rhs);
+                    transition_count++;
                 }
                 // else error
                 else {
@@ -109,7 +123,7 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
                     // print verbose message about the error to terminal
                     cout << "PARSING ERROR. Invalid input string." << std::endl;
                     cout << "no production found in the form: "<< top_of_stack << " => " << curr_token << " ..." << std::endl;
-                    cout << "Check ouput/" << output_file_name  << " for more details." << std::endl;
+                    cout << "Check ouput/" << output_file_name  << " - transition number: " << transition_count << " for more details." << std::endl;
 
                     // exit gracefully
                     exit(1);

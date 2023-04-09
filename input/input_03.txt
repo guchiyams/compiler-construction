@@ -6,8 +6,16 @@ function convert$ [fahr:int]
 int    low,  high, step$;      ! declarations !
 
 get (low, high, step$);
+
+if (low => high) {
+    return;
+}
+endif
+
 while (low  <  high )  
     {  put (low);
         put (convert$ (low));
         low =  low  +  step$;
     } 
+
+return low;
