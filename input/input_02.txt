@@ -1,7 +1,8 @@
 ! no function definition !
 
 %%
-int    low,  high, step$;      ! declarations !
+int    low,  high, step$;
+real   lower, higher, steps$;
 
 get (low, high, step$);
 while (low  <  high )  

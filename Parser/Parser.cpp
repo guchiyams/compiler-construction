@@ -35,7 +35,7 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
     // if output file successfully opened
     if (out_file.is_open()) {
         out_file << "parsing file: "<< this->input_file_name << "...\n" << std::endl;
-        cout << "parsing file: "<< this->input_file_name << "...\n";
+        cout << "\nparsing file: "<< this->input_file_name << "...\n";
 
         // while parser stack is not empty
         while (!_parser_stack.empty()) {
@@ -85,12 +85,14 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
                 // else notify user of parsing error
                 else {
                     // print verbose message about the error
-                    out_file << "terminals do not match: \""<< top_of_stack << "\" != \"" << curr_token << "\"" << std::endl;
+                    out_file << "\nterminals do not match:" << std::endl;
+                    out_file << "   expected: \""<< top_of_stack << "\". received: \"" << curr_token << "\"" << std::endl;
 
                     // print verbose message about the error to terminal
-                    cout << "PARSING ERROR. Invalid input string." << std::endl;
-                    cout << "terminals do not match: \""<< top_of_stack << "\" != \"" << curr_token << "\"" << std::endl;
-                    cout << "Check ouput/" << output_file_name  << " - transition number: " << transition_count << " for more details." << std::endl;
+                    cout << "\nPARSING ERROR. Invalid input string." << std::endl;
+                    cout << "\nterminals do not match:" << std::endl;
+                    cout << "   expected: \""<< top_of_stack << "\". received: \"" << curr_token << "\"" << std::endl << std::endl;
+                    cout << "Check ouput/" << output_file_name  << " - transition number: " << transition_count << " for more details." << std::endl << std::endl;
 
                     // exit gracefully
                     exit(1);
@@ -119,9 +121,9 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
                     out_file << "\nno production found in the form: \""<< top_of_stack << "\" => \"" << curr_token << "\" ..." << std::endl;
 
                     // print verbose message about the error to terminal
-                    cout << "PARSING ERROR. Invalid input string." << std::endl;
-                    cout << "no production found in the form: "<< top_of_stack << " => " << curr_token << " ..." << std::endl;
-                    cout << "Check ouput/" << output_file_name  << " - transition number: " << transition_count << " for more details." << std::endl;
+                    cout << "\nPARSING ERROR. Invalid input string." << std::endl;
+                    cout << "   no production found in the form: "<< top_of_stack << " => " << curr_token << " ..." << std::endl << std::endl;
+                    cout << "Check ouput/" << output_file_name  << " - transition number: " << transition_count << " for more details." << std::endl << std::endl;
 
                     // exit gracefully
                     exit(1);
@@ -136,11 +138,11 @@ bool PredictiveParser::parse_to_outfile(string& output_file_name) {
     }
 
     // print success message to output file
-    out_file << "successfully parsed input. input is valid." << std::endl;
+    out_file << "successfully parsed input. input is valid.";
 
     // print success message to terminal
-    cout << "successfully parsed input. input is valid." << std::endl;
-    cout << "Check ouput/" << output_file_name  << " for more details." << std::endl;
+    cout << "successfully parsed input. input is valid." << std::endl << std::endl;
+    cout << "Check ouput/" << output_file_name  << " for more details." << std::endl << std::endl;
 
     // close file
     out_file.close();
