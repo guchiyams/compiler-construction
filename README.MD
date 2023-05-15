@@ -1,8 +1,8 @@
-# Project 2 - Predictive Parser
+# Project 3 - Intermediate Code Generation
 
 ## Description
 
-The main goal of this project is to construct a parser that can recognize the syntax of a given programming language based on the rules defined by the context-free grammar. This parser should be able to efficiently and accurately parse the input source code and produce an error-free parse tree. The project will require a thorough understanding of parsing algorithms, lexical analysis, syntax analysis, and compiler construction concepts. The successful completion of this project will demonstrate the ability to develop a reliable and efficient parser for a programming language, which is a crucial component of any compiler or interpreter.
+The project aimed to develop a software tool that could generate intermediate assembly code from an input code. The tool used a SLR parser to parse the input code, which used a parsing table to shift or reduce states into or out of a stack. The parser was able to determine uninitialized variables and variable redefinition errors by using a symbol table. The output assembly code was generated during the SLR parse by applying semantic actions to the non-terminal symbols in the input code. These semantic actions generated intermediate code fragments that were combined to produce the final output assembly code. Overall, the project was successful in generating intermediate assembly code that was a faithful translation of the input code into the target assembly language.
 
 ## Getting Started
 
@@ -13,12 +13,17 @@ The main goal of this project is to construct a parser that can recognize the sy
 
 ### Installing
 
-* Download repository [here](https://github.com/guchiyams/compiler-construction)
+* Open your terminal and execute the following command:
+```
+git clone https://github.com/guchiyams/compiler-construction.git
+```
+* Wait for the cloning process to finish. Once the process is complete, you should see a new directory with the name of the repository in your chosen directory.
+* You can now navigate to the cloned repository and start working with the code.
 
-### Executing program
+### Executing the Program
 
 * Open the command line of your OS
-* Change into downloaded repository directory
+* Change into downloaded/cloned repository directory
 * Execute the folliwng command:
 ```
 ./run_parser.sh <input_file>
@@ -27,7 +32,7 @@ The main goal of this project is to construct a parser that can recognize the sy
     * input_01
     * input_02
     * input_03
-* NOTE: the output of the program will be printed into the corresponding input file suffix number output file (e.g. input_01 -> 01_output.txt)
+* NOTE: the output of the program will be printed into the corresponding input file suffix number output file inside the `output/` directory (e.g. input_01 -> 01_output.txt)
 
 ## Help
 
@@ -36,17 +41,22 @@ Your OS may reject your attempt to run the downloaded executable file. To fix th
 sudo ./run_parser.sh <input_file>
 ```
 
-## Program Design
+## Project Details
+The goal of the project was to develop a software tool that could generate intermediate assembly code from an input code.
 
-The main goal of this program is to implement a table-driven predictive parser for the given context-free grammar (CFG) using a 3D vector table, two unordered maps, and a stack. The program takes an input string, performs lexical analysis using a previously implemented lexer, and then passes the resulting list of Tokens to the parser. The parser then uses the table, maps, and stack to parse the input string and determine if it is syntactically valid according to the CFG.
+The SLR parser works by using a parsing table to shift or reduce states into or out of a stack. The parsing table is constructed by analyzing the grammar of the input language. The parser reads the input code from left to right and pushes tokens onto a stack. When it encounters a reduce action in the parsing table, it pops tokens off the stack and replaces them with a non-terminal symbol. This process continues until the input code is fully parsed and the resulting parse tree is constructed.
 
-The first step in the program design is to initialize the 3D vector table. This table isused to store the productions of the CFG in a format that can be easily accessed by the parser during parsing. The table has three dimensions: rows, columns, and a third dimension that holds the right-hand side of each production as a string separated by terminals. The table is manually populated from the information given for the project.
+The SLR parser implemented in the project was able to determine uninitialized variables and variable redefinition errors by using a symbol table. The symbol table kept track of all the variables that had been initialized and their respective values. When the parser encountered a variable in the input code, it checked the symbol table to see if the variable had already been initialized. If the variable had not been initialized, the parser reported an error. If the variable had already been initialized and the input code attempted to redefine it, the parser reported a redefinition error.
 
-The next step is to initialize two unordered maps: one mapping each terminal symbol to its corresponding column index in the table, and another mapping each non-terminal symbol to its corresponding row index in the table. These maps will be used by the parser to quickly access the appropriate cells in the table during parsing.
+During the SLR parse, the output assembly code was generated by applying semantic actions to the non-terminal symbols that were generated during the reduction steps. These semantic actions were defined in the grammar of the input language and were executed by the parser as it built the parse tree.
 
-The parser itself uses a stack to keep track of the symbols that it is currently processing. The stack is initially populated with the start symbol of the CFG. During parsing, the program pops symbols from the top of the stack and performs one of two actions depending on whether the symbol is a non-terminal or a terminal. If the symbol is a non-terminal, the program looks up the corresponding row in the table using the non-terminal to row index map, and the corresponding column using the terminal to column index map based on the next token. If the table cell contains a production, the program pushes the symbols from the production RHS onto the stack in reverse order. If the table cell is empty, the parser should report a syntax error. If the symbol is a terminal, the program compares it with the next token. If they match, the program pops the token and continues parsing. If they do not match, the parser should report a syntax error.
+The semantic actions typically generated code that corresponded to the operation being performed by the input language. For example, if the input code included an arithmetic expression, the semantic action associated with the reduction step for that expression would generate assembly code that implemented the corresponding arithmetic operation. The generated code was then added to the output assembly code.
 
-Overall, the design of the program follows a clear and logical progression from initializing the data structures to parsing the input string. The use of a table, maps, and stack allows for efficient and accurate parsing of the input string according to the rules of the CFG.
+As the parse tree was being constructed, the parser maintained a stack of intermediate code fragments that were generated by the semantic actions. When a reduction step was executed, the parser popped the corresponding intermediate code fragments from the stack, combined them according to the semantic action, and then pushed the resulting code fragment back onto the stack. This process continued until the parse tree was fully constructed and the final intermediate code fragment was at the top of the stack.
+
+Once the parse was complete, the output assembly code was extracted from the top of the stack and written to a file. This code represented a faithful translation of the input code into the target assembly language.
+
+Overall, the project was successful in generating intermediate assembly code from an input code. The use of a SLR parser and a symbol table made it possible to identify and report errors related to uninitialized variables and variable redefinition. This tool could be useful for programmers looking to convert high-level code to assembly code.
 
 ## Author
 
