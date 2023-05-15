@@ -1,4 +1,4 @@
-# Project 3 - Intermediate Code Generation
+# Intermediate Code Generation
 
 ## Description
 
