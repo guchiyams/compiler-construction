@@ -1,6 +1,6 @@
 %%
-int    low,  high, step$;      ! declarations !
-int      x,     y,     z;
+int    low,  high, step$, done;      ! declarations !
+boolean      x,     y,     z;
 
 get (low);
 get (high);
@@ -13,6 +13,7 @@ put((high * low));
 
 if (low => high)
     {
+        put(high);
         return;
     } else {
         put(low);
@@ -27,5 +28,6 @@ while ( low < high ) {
     get(step$, low, high);
 }
 
+put(done);
 
 return low;

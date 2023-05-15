@@ -1,5 +1,6 @@
 %%
 int    low,  high, step$;       ! declarations !
+boolean    x, y, z;
 
 get (low, high, step$);
 put(high);

@@ -87,7 +87,7 @@ bool LR_Parser::compile(string& output_file_name) {
                 _instruction_set.push_back(std::make_pair("PUSHM " + std::to_string(_quad_table[i]._oprnd2), _quad_table[i]));
                 ++line_count;
             }
-            _instruction_set.push_back(std::make_pair("ADD", _quad_table[i]));
+            _instruction_set.push_back(std::make_pair("SUB", _quad_table[i]));
             ++line_count;
         }
         else if (_quad_table[i]._op == "*") {
@@ -109,7 +109,7 @@ bool LR_Parser::compile(string& output_file_name) {
                 _instruction_set.push_back(std::make_pair("PUSHM " + std::to_string(_quad_table[i]._oprnd2), _quad_table[i]));
                 ++line_count;
             }
-            _instruction_set.push_back(std::make_pair("ADD", _quad_table[i]));
+            _instruction_set.push_back(std::make_pair("MUL", _quad_table[i]));
             ++line_count;
         }
         else if (_quad_table[i]._op == "/") {
@@ -131,7 +131,7 @@ bool LR_Parser::compile(string& output_file_name) {
                 _instruction_set.push_back(std::make_pair("PUSHM " + std::to_string(_quad_table[i]._oprnd2), _quad_table[i]));
                 ++line_count;
             }
-            _instruction_set.push_back(std::make_pair("ADD", _quad_table[i]));
+            _instruction_set.push_back(std::make_pair("DIV", _quad_table[i]));
             ++line_count;
         }
         else if (_quad_table[i]._op == "==") {
@@ -175,7 +175,7 @@ bool LR_Parser::compile(string& output_file_name) {
                 _instruction_set.push_back(std::make_pair("PUSHM " + std::to_string(_quad_table[i]._oprnd2), _quad_table[i]));
                 ++line_count;
             }
-            _instruction_set.push_back(std::make_pair("EQU", _quad_table[i]));
+            _instruction_set.push_back(std::make_pair("NEQ", _quad_table[i]));
             ++line_count;
         }
         else if (_quad_table[i]._op == ">") {
@@ -197,7 +197,7 @@ bool LR_Parser::compile(string& output_file_name) {
                 _instruction_set.push_back(std::make_pair("PUSHM " + std::to_string(_quad_table[i]._oprnd2), _quad_table[i]));
                 ++line_count;
             }
-            _instruction_set.push_back(std::make_pair("EQU", _quad_table[i]));
+            _instruction_set.push_back(std::make_pair("GRT", _quad_table[i]));
             ++line_count;
         }
         else if (_quad_table[i]._op == "<") {
@@ -219,7 +219,7 @@ bool LR_Parser::compile(string& output_file_name) {
                 _instruction_set.push_back(std::make_pair("PUSHM " + std::to_string(_quad_table[i]._oprnd2), _quad_table[i]));
                 ++line_count;
             }
-            _instruction_set.push_back(std::make_pair("EQU", _quad_table[i]));
+            _instruction_set.push_back(std::make_pair("LES", _quad_table[i]));
             ++line_count;
         }
         else if (_quad_table[i]._op == "=>") {
@@ -241,7 +241,7 @@ bool LR_Parser::compile(string& output_file_name) {
                 _instruction_set.push_back(std::make_pair("PUSHM " + std::to_string(_quad_table[i]._oprnd2), _quad_table[i]));
                 ++line_count;
             }
-            _instruction_set.push_back(std::make_pair("EQU", _quad_table[i]));
+            _instruction_set.push_back(std::make_pair("GEQ", _quad_table[i]));
             ++line_count;
         }
         else if (_quad_table[i]._op == "=<") {
@@ -263,7 +263,7 @@ bool LR_Parser::compile(string& output_file_name) {
                 _instruction_set.push_back(std::make_pair("PUSHM " + std::to_string(_quad_table[i]._oprnd2), _quad_table[i]));
                 ++line_count;
             }
-            _instruction_set.push_back(std::make_pair("EQU", _quad_table[i]));
+            _instruction_set.push_back(std::make_pair("LEQ", _quad_table[i]));
             ++line_count;
         }
         else if (_quad_table[i]._op == "ifjumpz") {
@@ -338,9 +338,6 @@ bool LR_Parser::compile(string& output_file_name) {
                 line_count += 2;
             }
         }
-        // else if (_quad_table[i]._op == "printpush") {
-        //     _instruction_set.push_back(std::make_pair("PUSHM " + std::to_string(_quad_table[i]._result), _quad_table[i]));
-        // }
         else if (_quad_table[i]._op == "print") {
             // _instruction_set.push_back(std::make_pair("PUSHM " + std::to_string(_quad_table[i]._oprnd1), _quad_table[i]));
             auto symbol_entry = _symbol_table.get_symbol_entry(_quad_table[i]._oprnd1);
@@ -781,7 +778,7 @@ void LR_Parser::push_reduce_lhs_to_frame_stack_and_generate_quad(ofstream& out_f
     }
     // R46: <Primary> => ( <Expression> )
     else if ( next_action == "R46") {
-        _lr_parser_frame_stack.push(StackFrame(next_state, reduce_entry_lhs, reduce_entry_lhs[1]));
+        _lr_parser_frame_stack.push(StackFrame(next_state, reduce_entry_lhs, rhs_stack_frames[1]._mem_addr));
     }
     // R50: <IfThen> => <If> <Statement> endif
     else if ( next_action == "R49") {

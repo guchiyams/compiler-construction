@@ -47,16 +47,15 @@ int main(int argc, char* argv[])
         exit(1);
     }
 
-    // LL_Parser ll_parser(input_file_name);
-    // ll_parser.parse_to_outfile(output_file_name);
-
+    // intialize parser
     LR_Parser lr_parser(input_file_name);
+
+    // compile
     lr_parser.compile(output_file_name);
 
+    // print details to stdout
     lr_parser.get_symbol_table().print_symbol_to_stdout();
     lr_parser.print_quads();
-    // string next_action = lr_parser._lr_parser_table.get_next_action(0, "t");
-    // cout << next_action << "\n";
 
     return 0;
 };

@@ -9,7 +9,7 @@
 9	LABEL
 10	PUSHM 2001
 11	PUSHM 2002
-12	EQU
+12	LES
 13	JUMPZ 34
 14	PUSHM 2001
 15	STDOUT
@@ -42,7 +42,7 @@
 42	POPM 2002
 43	PUSHI 500
 44	PUSHI 10000
-45	EQU
+45	GEQ
 46	JUMPZ 47
 47	LABEL
 
@@ -51,8 +51,11 @@
 +----------+----------+-----------+
 |MEM ADDR  |ID        |DATA TYPE  |
 +----------+----------+-----------+
-|2003      |step$     |INTEGER    |
 |2002      |high      |INTEGER    |
+|2003      |step$     |INTEGER    |
+|2006      |z         |BOOLEAN    |
+|2005      |y         |BOOLEAN    |
+|2004      |x         |BOOLEAN    |
 |2001      |low       |INTEGER    |
 +----------+----------+-----------+
 
