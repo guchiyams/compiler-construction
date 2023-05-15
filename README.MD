@@ -11,6 +11,7 @@ The project aimed to develop a software tool that could generate intermediate as
 * OS: Mac OS || Linux
 * Compiler: LLVM Clang
 
+
 ### Installing
 
 * Open your terminal and execute the following command:
@@ -19,6 +20,7 @@ git clone https://github.com/guchiyams/compiler-construction.git
 ```
 * Wait for the cloning process to finish. Once the process is complete, you should see a new directory with the name of the repository in your chosen directory.
 * You can now navigate to the cloned repository and start working with the code.
+
 
 ### Executing the Program
 
@@ -35,6 +37,7 @@ git clone https://github.com/guchiyams/compiler-construction.git
 * NOTE: the output of the program will be printed into the corresponding input file suffix number output file inside the `output/` directory (e.g. input_01 -> 01_output.txt)
 * NOTE: for debugging, a parse log is generated in the corresponding input file suffix number output file inside the `parse_log/` directory (e.g. input_01 -> 01_output.txt)
 
+
 ## Help
 
 Your OS may reject your attempt to run the downloaded executable file. To fix this, try running the executable file as a super user:
@@ -45,6 +48,7 @@ sudo ./run_parser.sh <input_file>
 ## Examples
 
 To check out example outputs from a given input, checkout the input in the `input/` directory and its corresponding output in the `output/` directory.
+
 
 ## Project Details
 The goal of the project was to develop a software tool that could generate intermediate assembly code from an input code.
