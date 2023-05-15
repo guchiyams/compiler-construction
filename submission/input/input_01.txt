@@ -1,0 +1,9 @@
+%%
+int low, high, step;
+
+high = low + 20000;
+low = high - step;
+step = high * low;
+step = high / 10;
+
+return high;

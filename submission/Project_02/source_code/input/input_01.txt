@@ -1,8 +1,0 @@
-function convert$ [fahr:int]
-{
-    return 5 * (fahr -32) / 9;
-}
-int    low,  high, step$;      ! declarations !
-%%
-
-! no body. should return an error !

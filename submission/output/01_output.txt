@@ -1,0 +1,27 @@
+1	PUSHM 2001
+2	PUSHI 20000
+3	ADD
+4	POPM 2002
+5	PUSHM 2002
+6	PUSHM 2003
+7	SUB
+8	POPM 2001
+9	PUSHM 2002
+10	PUSHM 2001
+11	MUL
+12	POPM 2003
+13	PUSHM 2002
+14	PUSHI 10
+15	DIV
+16	POPM 2003
+
+
+======== SYMBOL TABLE ========
++----------+----------+-----------+
+|MEM ADDR  |ID        |DATA TYPE  |
++----------+----------+-----------+
+|2003      |step      |INTEGER    |
+|2002      |high      |INTEGER    |
+|2001      |low       |INTEGER    |
++----------+----------+-----------+
+
