@@ -9,20 +9,23 @@ Team :
 #include <iostream>
 #include <fstream>
 
-#include "./Parser/Parser.cpp"
+#include "./LL_Parser/LL_Parser.cpp"
+#include "./LR_Parser/LR_Parser.cpp"
 
 using std::cout;
 
 int main(int argc, char* argv[])
 {
+    /* get user inputted arguments and error check */
     if (argc > 2) {
-        cout << "Too many arguments. Aborting..." << std::endl;
+        cout << "Too many arguments. Exiting program..." << std::endl;
         exit(1);
     } else if (argc == 1) {
-        cout << "Missing paramter: input_[01 | 02 | 03]. Aborting..." << std::endl;
+        cout << "Missing paramter: input_[01 | 02 | 03]. Exiting program..." << std::endl;
         exit(1);
     }
 
+    /* get input file name and output file name */
     const string INPUT = argv[1];
     string input_file_name = "";
     string output_file_name = "";
@@ -40,12 +43,20 @@ int main(int argc, char* argv[])
         output_file_name = "03_output.txt";
     }
     else {
-        cout << "Invalid argument. Aborting..." << std::endl;
+        cout << "Invalid argument. Exiting program..." << std::endl;
         exit(1);
     }
 
-    PredictiveParser parser(input_file_name);
-    parser.parse_to_outfile(output_file_name);
+    // LL_Parser ll_parser(input_file_name);
+    // ll_parser.parse_to_outfile(output_file_name);
+
+    LR_Parser lr_parser(input_file_name);
+    lr_parser.compile(output_file_name);
+
+    lr_parser.get_symbol_table().print_symbol_to_stdout();
+    lr_parser.print_quads();
+    // string next_action = lr_parser._lr_parser_table.get_next_action(0, "t");
+    // cout << next_action << "\n";
 
     return 0;
 };

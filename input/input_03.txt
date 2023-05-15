@@ -1,40 +1,31 @@
-function convert$ [fahr:int]
-{
-    return 5 * (fahr -32) / 9;
-}
-
-function gethigher [fahr_one:int, fahr_two:int] 
-{
-    if (fahr_one > fahr_two)
-        {
-            return fahr_one;
-        }
-    else
-    {
-        return fahr_two;
-    }
-    endif
-}
 %%
 int    low,  high, step$;      ! declarations !
-real   lower, higher, steps$;
-boolean islower, ishigher;
+int      x,     y,     z;
 
+get (low);
+get (high);
+get (step$);
 get (low, high, step$);
+put((high + low));
+put((high - low));
+put((high / low));
+put((high * low));
 
 if (low => high)
     {
         return;
-    } else if (islower == true) 
-        {
-        return;
-        } endif
-endif
+    } else {
+        put(low);
+    } endif
 
-while (low  <  high )  
-    {  put (low);
-        put (convert$ (low));
-        low =  low  +  step$;
-    } 
+get(high, low);
+
+while ( low < high ) {
+    high = low;
+    low = high + step$;
+    put(step$);
+    get(step$, low, high);
+}
+
 
 return low;

@@ -9,7 +9,7 @@
 #include <unordered_set>
 
 #include "../Lexer/Lexer.cpp"
-#include "./ParserTable/ParserTable.cpp"
+#include "./LL_ParserTable/LL_ParserTable.cpp"
 
 using std::cout;
 using std::ofstream;
@@ -18,11 +18,11 @@ using std::string;
 using std::unordered_map;
 using std::unordered_set;
 
-class PredictiveParser {
+class LL_Parser {
     public:
-        PredictiveParser() = default;
-        PredictiveParser(string& input_file_name);
-        ~PredictiveParser() = default;
+        LL_Parser() = default;
+        LL_Parser(string& input_file_name);
+        ~LL_Parser() = default;
 
         // getters
         Lexer get_lexer() const;
@@ -38,9 +38,9 @@ class PredictiveParser {
         void print_production(ofstream& out_file, string& lhs, vector<string> rhs);
 
     private:
-        stack<string> _parser_stack;
-        string input_file_name;
+        string _input_file_name;
         Lexer _lexer;
+        stack<string> _parser_stack;
         PredictiveParserTable _parser_table;
         static const unordered_set<string> TERMINAL_SET;
 };

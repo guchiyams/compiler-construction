@@ -5,6 +5,7 @@
 
 Lexer::Lexer(string& input_file_name)
 {   
+    this->line_count = 0;
     this->input_file_name = input_file_name;
     this->init();
 }
@@ -144,6 +145,7 @@ void Lexer::init(){
                 // go to next state
                 curr_state = next_state;
             }
+            line_count++;
         }
 
         // push the end of input token
@@ -179,6 +181,11 @@ Token Lexer::get_next_token_and_pop() {
     this->_tokens.pop_front();
     return next_token;
 }
+
+const int Lexer::get_line_count() {
+    return line_count;
+}
+
 
 Token Lexer::pop_front() {
     Token next_token = this->_tokens.front();
@@ -234,7 +241,7 @@ const int Lexer::TRANSITION_TABLE[128][128] = {
     { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 27,  2, 59,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3,  2, 50 },      // STATE_26 -> IN e_ KEYWORD
     { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 28,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3,  2, 50 },      // STATE_27 ->      IN else_l
     { 2,  2,  2,  2, 29,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3,  2, 50 },      // STATE_28 ->      IN else_s KEYWORD
-    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12, 12, 36, 36, 36,  2, 50},      // STATE_29 ->      IN else_e KEYWORD
+    { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12, 12, 36, 36, 36,  2, 50 },      // STATE_29 ->      IN else_e KEYWORD
     { 2,  2,  2,  2, 31,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3,  2, 50 },      // STATE_30 -> IN return_r KEYWORD
     {61,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 32,  2,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3,  2, 50 },      // STATE_31 ->      IN return_e KEYWORD
     { 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 33,  2,  2,  2,  2,  2,  2,  2, 12,  3,  3,  3,  3,  2, 50 },      // STATE_32 ->      IN return_t KEYWORD

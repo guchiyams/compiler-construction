@@ -18,7 +18,7 @@ class PredictiveParserTable {
         PredictiveParserTable() = default;
         ~PredictiveParserTable() = default;
 
-        vector<string> get_next_step(string lhs, string incoming_token);
+        const vector<string> get_next_step(string lhs, string incoming_token) const;
 
     private:
         static const unordered_map<string, int> NONTERMINAL_TO_ROW;

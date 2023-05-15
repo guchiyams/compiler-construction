@@ -1,9 +1,9 @@
 #ifndef PARSER_TABLE_CPP
 #define PARSER_TABLE_CPP
 
-#include "./ParserTable.h"
+#include "./LL_ParserTable.h"
 
-vector<string> PredictiveParserTable::get_next_step(string lhs, string incoming_token) {
+const vector<string> PredictiveParserTable::get_next_step(string lhs, string incoming_token) const {
     int row = -1;
     int col = -1;
 

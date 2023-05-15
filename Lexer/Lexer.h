@@ -26,11 +26,13 @@ class Lexer {
         deque<Token>& get_tokens();
         Token get_next_token();
         Token get_next_token_and_pop();
+        const int get_line_count();
 
         // modifiers
         Token pop_front();
 
     private:
+        int line_count;
         string input_file_name;
         deque<Token> _tokens;
         static const unordered_map<char, int> CHAR_TO_COL;
