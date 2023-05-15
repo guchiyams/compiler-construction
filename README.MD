@@ -2,7 +2,7 @@
 
 ## Description
 
-The project aimed to develop a software tool that could generate intermediate assembly code from an input code. The tool used a SLR parser to parse the input code, which used a parsing table to shift or reduce states into or out of a stack. The parser was able to determine uninitialized variables and variable redefinition errors by using a symbol table. The output assembly code was generated during the SLR parse by applying semantic actions to the non-terminal symbols in the input code. These semantic actions generated intermediate code fragments that were combined to produce the final output assembly code. Overall, the project was successful in generating intermediate assembly code that was a faithful translation of the input code into the target assembly language.
+The project aimed to develop a tool that could generate intermediate assembly code from an input code. The tool used a SLR parser to parse the input code, which used a parsing table to shift or reduce states into or out of a stack. The parser was able to determine uninitialized variables and variable redefinition errors by using a symbol table. The output assembly code was generated during the SLR parse by applying semantic actions to the non-terminal symbols in the input code. These semantic actions generated intermediate code fragments that were combined to produce the final output assembly code. Overall, the project was successful in generating intermediate assembly code that was a faithful translation of the input code into the target assembly language.
 
 ## Getting Started
 
