@@ -33,6 +33,7 @@ git clone https://github.com/guchiyams/compiler-construction.git
     * input_02
     * input_03
 * NOTE: the output of the program will be printed into the corresponding input file suffix number output file inside the `output/` directory (e.g. input_01 -> 01_output.txt)
+* NOTE: for debugging, a parse log is generated in the corresponding input file suffix number output file inside the `parse_log/` directory (e.g. input_01 -> 01_output.txt)
 
 ## Help
 
@@ -40,6 +41,10 @@ Your OS may reject your attempt to run the downloaded executable file. To fix th
 ```
 sudo ./run_parser.sh <input_file>
 ```
+
+## Examples
+
+To check out example outputs from a given input, checkout the input in the `input/` directory and its corresponding output in the `output/` directory.
 
 ## Project Details
 The goal of the project was to develop a software tool that could generate intermediate assembly code from an input code.
