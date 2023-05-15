@@ -28,7 +28,7 @@ git clone https://github.com/guchiyams/compiler-construction.git
 * Change into downloaded/cloned repository directory
 * Execute the folliwng command:
 ```
-./run_parser.sh <input_file>
+./compile <input_file>
 ```
 * NOTE: the input_file can be one of the following:
     * input_01
@@ -42,7 +42,7 @@ git clone https://github.com/guchiyams/compiler-construction.git
 
 Your OS may reject your attempt to run the downloaded executable file. To fix this, try running the executable file as a super user:
 ```
-sudo ./run_parser.sh <input_file>
+sudo ./compile <input_file>
 ```
 
 ## Examples
