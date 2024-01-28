@@ -2,7 +2,7 @@
 
 ## Description
 
-The project aimed to develop a tool that could generate intermediate assembly code from an input code. The tool used a SLR parser to parse the input code, which used a parsing table to shift or reduce states into or out of a stack. The parser was able to determine uninitialized variables and variable redefinition errors by using a symbol table. The output assembly code was generated during the SLR parse by applying semantic actions to the non-terminal symbols in the input code. These semantic actions generated intermediate code fragments that were combined to produce the final output assembly code. Overall, the project was successful in generating intermediate assembly code that was a faithful translation of the input code into the target assembly language.
+This project generates intermediate assembly code – a part of the compilation process – for the Rat23S language (details of Rat23S can be found in Rat23S.pdf). This is done in 3 steps: 1) lexical analysis to tokenize input code, 2) bottom-up LR parsing for syntax analysis, and 3) creation of the symbol table to manage variables, functions, and other symbols. The parser and symbol table are able to determine compile time errors such as uninitialized variables and variable redefinition errors. The output assembly code was generated during the SLR parse by applying semantic actions to the non-terminal symbols in the input code. These semantic actions generated intermediate code fragments that were combined to produce the final output assembly code.
 
 ## Getting Started
 
@@ -42,12 +42,12 @@ git clone https://github.com/guchiyams/compiler-construction.git
 
 Your OS may reject your attempt to run the downloaded executable file. To fix this, try running the executable file as a super user:
 ```
-sudo ./compile <input_file>
+sudo chmod +x compile
 ```
 
 ## Examples
 
-To check out example outputs from a given input, checkout the input in the `input/` directory and its corresponding output in the `output/` directory.
+To check out example outputs from a given input, check out the input in the `input/` directory and its corresponding output in the `output/` directory.
 
 
 ## Project Details
