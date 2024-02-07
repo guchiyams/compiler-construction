@@ -2,7 +2,7 @@
 
 ## Description
 
-This project generates intermediate assembly code – a part of the compilation process – for the Rat23S language (details of Rat23S can be found in Rat23S.pdf). This is done in 3 steps: 1) lexical analysis to tokenize input code, 2) bottom-up LR parsing for syntax analysis, and 3) creation of the symbol table to manage variables, functions, and other symbols. The parser and symbol table are able to determine compile time errors such as uninitialized variables and variable redefinition errors. The output assembly code was generated during the SLR parse by applying semantic actions to the non-terminal symbols in the input code. These semantic actions generated intermediate code fragments that were combined to produce the final output assembly code.
+This program generates intermediate assembly code – a part of the compilation process – for the Rat23S language (details of Rat23S can be found in Rat23S.pdf). This is done in 3 steps: 1) lexical analysis to tokenize input code, 2) bottom-up LR parsing for syntax analysis, and 3) creation of the symbol table to manage variables, functions, and other symbols. The parser and symbol table are able to determine compile time errors such as uninitialized variables and variable redefinition errors. The output assembly code was generated during the SLR parse by applying semantic actions to the non-terminal symbols in the input code. These semantic actions generated intermediate code fragments that were combined to produce the final output assembly code.
 
 ## Getting Started
 
